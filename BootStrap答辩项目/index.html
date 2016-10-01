@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<style>
+		*{
+			font-family: "微软雅黑";
+		}
+			#midle{
+				margin-top: 8px;
+				margin-left: 20px;
+			}
+			.navbar{
+				background-color: #343434;
+			}
+			.input-sm{
+				height: 35px;
+			}
+			#log{
+				width: 40px;
+				display: inline;
+				margin-bottom: 8px;
+			}
+			.navbar-inverse{
+				border-radius:0 ;
+			}
+			.navbar-header{
+				margin-top: -9px;
+			}
+			.item>img{
+				width: 100%;
+			}
+			.form{
+				font-size:14px ;
+			}
+			#excel:hover{
+				background: none;
+			}
+			#container{
+				display: flex;
+				padding: 0;
+				justify-content: space-between;
+			}
+			.container>img{
+				width: 270px;
+				height: 100%;
+			}
+			#last:hover{
+				background: none;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					
+					<a href="#" class="navbar-brand"><img id="log" src="img/logo.png" />乐橙科技</a>
+				</div>
+				<div>
+					<ul class="nav navbar-nav">
+						<li class="dropdown"><a href="#">待办<span class="badge">13</span></a></li>
+						<li >
+							<a href="#" class="dropdown-toggle" data-toggle = "dropdown" >
+								登记
+								<span class="caret"></span>
+							</a>
+						</li>
+						<li><a href="#">通知</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle = "dropdown">
+								检索
+								<span class="caret"></span>
+							</a>
+							
+						</li>
+						<li id="midle">
+							<input type="text"placeholder="请输入信息进行检索" class="input-sm"/>
+							<button class="btn btn-success">全文检索</button>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="">退出</a></li>
+						<li>
+							<a href="">
+								管理员
+								<span class="caret"></span>
+							</a>
+							
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div id="mycarousel" class="carousel" data-ride="carousel" data-interval="3000" style="margin-top: -20px;">
+			<ol class="carousel-indicators">
+				<li class="active" data-target="#mycarousel" data-slide-to=0></li>
+				<li data-target="#mycarousel" data-slide-to=1></li>
+				<li data-target="#mycarousel" data-slide-to=2></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="img/1.jpg"/>
+				</div>
+				<div class="item">
+					<img src="img/2.jpg"/>
+				</div>
+				<div class="item">
+					<img src="img/3.jpg"/>
+				</div>
+			</div>
+			<a class="left carousel-control" href="#mycarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control " href="#mycarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</div>
+		<div class="navbar-default" style="height: 50px;">
+			<div class="container"style="vertical-align: middle; padding-top: 10px;">
+				<form class="form-inline">
+					<div class="input-group input-group-sm col-lg-2">
+						<span class="input-group-addon">手机号</span>
+						<input type="text" class="form-control" style="width: 200px;"/>
+					</div>
+					<div class="btn-group">
+						<button class="btn btn-default btn-sm" type="button">
+							部门
+						</button>
+						<button class="btn btn-default btn-sm">
+						    <span class="caret"></span>
+						</button>
+					</div>
+					<div class="input-group input-group-sm col-lg-2">
+						<span class="input-group-addon">时间</span>
+						<input type="text" class="form-control" style="width: 200px;"/>
+					</div>
+					<div class="btn-group">
+						<button class="btn btn-default btn-sm" type="button">
+							全部
+							<span class="glyphicon glyphicon-chevron-down" style="margin-left: 8px;"></span>
+						</button>
+					</div>
+					<button class="btn btn-success btn-sm">
+						<span class="glyphicon glyphicon-search"></span>
+						查询
+					</button>
+					<button class="btn btn-info btn-sm">
+						<span class="glyphicon glyphicon-search"></span>
+						今天
+					</button>
+					<button class="btn btn-sm btn-default">
+						<span class="glyphicon glyphicon-search"></span>
+						全部
+						<span class="badge">200</span>
+					</button>
+					<button class="btn btn-danger btn-sm">
+						<span class="glyphicon glyphicon-search"></span>
+						正序
+					</button>
+					<button class="btn btn-primary btn-sm">
+						<span class="glyphicon glyphicon-hand-right"></span>
+						呼叫同事
+					</button>
+				</form>
+				
+			</div>
+		</div>
+		<div class="container" style="margin: 15px auto;">
+			<ol class="breadcrumb" >
+			    <li><a href="#"style="color: #000">乐橙科技</a></li>
+			    <li><a href="#"style="color: #000">个人主页</a></li>
+			</ol>
+		</div>
+		<div class="container">
+			<div class="list-group col-lg-9">
+				<a class="list-group-item"style="background-color: #F5F5F5">
+					<p class="list-group-item-heading " >
+						最新通知列表
+					</p>
+				</a>
+				<a class="list-group-item" style="display: block; height: 85px;">
+					<p style="margin-top: 40px;">以下是公司的最新通知，可进行查看、编辑、删除操作，同时可查看哪位支援看过通知</p>
+				</a>
+				<a class="list-group-item"style="display: block; height: 20px;">
+				</a>
+				<a class="list-group-item"style="display: block; height: 35px;">
+					<span class="col-lg-2">
+						通知名称
+					</span>
+					<span class="col-lg-2 col-lg-offset-0">
+						发布时间
+					</span>
+					<span class="col-lg-2 col-lg-offset-1">
+						发布人
+					</span>
+					<span class="col-lg-2 col-lg-offset-0">
+						操作
+					</span>
+				</a>
+				<a class="list-group-item" style="display: block; height: 50px;">
+					<span class="col-lg-2">
+						放假通知
+					</span>
+					<span class="col-lg-3 col-lg-offset-0">
+						2016-9-5 17:27:30
+					</span>
+					<span class="col-lg-2 col-lg-offset-0">
+						王慧雅
+					</span>
+					<span class="col-lg-5 col-lg-offset-0">
+						<span class="btn btn-info">
+							查看
+						</span>
+						<span class="btn btn-success">
+							<span class="glyphicon glyphicon-pencil"></span>编辑
+						</span>
+						<span class="btn btn-danger">
+							删除
+						</span>
+						<span class="btn btn-default">
+							谁看过
+						</span>
+					</span>
+				</a>
+				<a class="list-group-item" style="display: block; height: 50px;">
+					<span class="col-lg-2">
+						年会通知
+					</span>
+					<span class="col-lg-3 col-lg-offset-0">
+						2016-9-5 17:27:30
+					</span>
+					<span class="col-lg-2 col-lg-offset-0">
+						李总
+					</span>
+					<span class="col-lg-5 col-lg-offset-0">
+						<span class="btn btn-info">
+							查看
+						</span>
+						<span class="btn btn-success">
+							<span class="glyphicon glyphicon-pencil"></span>编辑
+						</span>
+						<span class="btn btn-danger">
+							删除
+						</span>
+						<span class="btn btn-default">
+							谁看过
+						</span>
+					</span>
+				</a>
+				<a class="list-group-item" style="display: block; height: 50px;">
+					<span class="col-lg-2">
+						元旦晚会
+					</span>
+					<span class="col-lg-3 col-lg-offset-0">
+						2016-9-5 17:27:30
+					</span>
+					<span class="col-lg-2 col-lg-offset-0">
+						李四
+					</span>
+					<span class="col-lg-5 col-lg-offset-0">
+						<span class="btn btn-info">
+							查看
+						</span>
+						<span class="btn btn-success">
+							<span class="glyphicon glyphicon-pencil"></span>编辑
+						</span>
+						<span class="btn btn-danger">
+							删除
+						</span>
+						<span class="btn btn-default">
+							谁看过
+						</span>
+					</span>
+				</a>
+				<ul class="pagination">
+					<li><a href="">&laquo;</a></li>
+					<li class="active"><a href="">1</a></li>
+					<li><a href="">2</a></li>
+					<li><a href="">3</a></li>
+					<li><a href="">4</a></li>
+					<li><a href="">5</a></li>
+					<li><a href="">&raquo;</a></li>
+				</ul>
+			</div>
+			<div class="list-group col-lg-3 col-lg-offset-0">
+				<a class="list-group-item"style="background-color: #F5F5F5">
+					<p class="list-group-item-heading " >
+						业绩统计图(单位：万元)
+					</p>
+				</a>
+				<a class="list-group-item"id="excel">
+					<img src="OA.jpg" />
+				</a>
+				<a class="list-group-item"style="background-color: #F5F5F5">
+					<p class="list-group-item-heading " >
+						两季销售业绩统计图
+					</p>
+				</a>
+				<a class="list-group-item"style=" display:block; height: 15px;">
+				</a>
+			</div>
+		</div>
+		<div class="container" id="container">
+			<img src="img/hd.jpg" />
+			<img src="img/hd.jpg" />
+			<img src="img/hd.jpg" />
+			<img src="img/hd.jpg" />
+		</div>
+		<div class="container">
+			<a class="list-group-item"style="background-color: #F5F5F5">
+					<p class="list-group-item-heading " >
+						发布爆料
+					</p>
+			</a>
+			<a class="list-group-item" style="display: block; height: 250px;"id="last">
+					<button class="btn btn-info">上传图片</button>
+					<input type="text" style="width: 800px;height: 150px; margin-top:10px ; display: block;"/>
+					<button class="btn btn-success">查看历史</button>
+					<button class="btn btn-info">确认发布</button>
+					<input type="checkbox"  style="display:inline-block; width: 15px; height: 15px;"/>发送全体
+			</a>
+		</div>
+		<footer style="background-color: #323232;">
+			<div class="container" style="color: white; height: 50px;line-height: 50px;">
+				Copyright&copy;2010-2015  北京乐橙教育科技有限公司
+				<span class="pull-right">京ICP备120181366号</span>
+			</div>
+		</footer>
+	</body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</html>
