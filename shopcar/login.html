@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<style>
+		body{
+			background-color: #f3f3f3;
+		}
+			#main{
+				width: 300px;
+				margin: 200px auto;
+				border: 3px solid #2eb0ff;
+				border-radius: 10px;
+			}
+			h2{
+				text-align: center;
+				margin: 30px 0;
+			}
+			#login{
+				margin: auto;
+				width: 235px;
+			}
+			table tr{
+				height: 40px;
+			}
+			#submit{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<h2>购物车管理系统</h2>
+			<form id="login" action="login.php">
+				<table>
+					<tr id="tr">
+						<td>用户名：</td>
+						<td><input type="text" name="username" id="username"/></td>
+					</tr>
+					<tr>
+						<td>密码：</td>
+						<td><input type="password" name="userpwd" id="userpwd"/></td>
+					</tr>
+					<tr>
+						<td colspan="2" id="submit"><input type="submit" value="确认登录"/></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<script>
+		var checkname=false,
+			checkpwd=false;
+			document.getElementById("username").onblur=function(){
+				var val=this.value;
+				if(val==""){
+					alert("用户名不能为空")
+				}else{
+					checkname=true;
+				}
+			};
+			document.getElementById("userpwd").onblur=function(){
+				var val=this.value;
+				if(val==""){
+					alert("请输入密码")
+				}else{
+					checkpwd=true;
+				}
+			};
+			document.getElementById("submit").onclick=function(){
+				var check=checkname&&checkpwd;
+				if(check==false){
+					alert("请输入账户名或密码")
+				};
+				return check;
+			}
+			
+			
+		</script>
+	</body>
+</html>

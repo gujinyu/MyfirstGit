@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<script type="text/javascript" src="js/angular.js" ></script>
+		<style>
+			.small_box_right{
+				width: 300px;
+				float: right;
+			}
+			.small_box_left{
+				width: 300px;
+				float: left;
+				
+			}
+			.submit{
+				color: white;
+				text-decoration: none;
+			}
+			.submit:hover{
+				color: white;
+				text-decoration: none;
+			}
+			h4{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container" ng-app="shopcars" ng-controller="shopcarsCtl">
+			<table class="table">
+				<tr>
+					<td>商品编号</td>
+					<td>商品名称</td>
+					<td>商品库存</td>
+					<td>商品价格</td>
+					<td>商品小计</td>
+					<td>操作</td>
+				</tr>
+				<tr ng-repeat="goods in Goods">
+					<td>{{goods.Good_ID}}</td>
+					<td>{{goods.Good_name}}</td>
+					<td>{{goods.Good_count}}</td>
+					<td>{{goods.Good_price}}</td>
+					<td>{{goods.Good_price*goods.Good_count}}</td>
+					<td>
+						<button class="btn btn-danger" ng-click="DeleteGoods(goods.Good_ID)">下架该商品</button>
+						<button class="btn btn-success" ng-click="UpdataGood(goods.Good_ID)">修改该商品</button>
+					</td>
+				</tr>
+				<tr>
+					<td>上架商品的总数量</td>
+					<td>{{getAllCounts()}}</td>
+					<td>商品总计</td>
+					<td>{{getAllPrices()}}</td>
+					<td><button class="btn btn-danger" ng-click="DeleteAll()">清除所有上架商品</button></td>
+					<td><button class="btn btn-success" ng-click="Addgoods=true">添加</button></td>
+				</tr>
+			</table>
+			<div class="small_box_right" ng-show="Addgoods">
+				<h4>请输入要添加的信息</h4>
+				<form action="Adddeal.php">
+				<table class="table">
+					<tr>
+						<td>商品的ID</td>
+						<td>
+							<input type="text" name="AddID"required="required"/>
+						</td>
+					</tr>
+					<tr>
+						<td>商品的名字</td>
+						<td>
+							<input type="text" name="AddName" required="required"/>
+						</td>
+					</tr>
+					<tr>
+						<td>商品的库存</td>
+						<td>
+							<input type="text" name="AddCounts"required="required"/>
+						</td>
+					</tr>
+					<tr>
+						<td>商品的价格</td>
+						<td>
+							<input type="text" name="AddPrice"required="required"/>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+						<button class="btn btn-primary" type="submit">确认添加</button>
+						</td>
+					</tr>
+				</table>
+				</form>
+			</div>
+			<div class="small_box_left" ng-show="updataGoods">
+				<h4>请输入要修改的信息</h4>
+				<form action="Updata.php">
+				<table class="table">
+					<tr>
+						<td>商品的ID</td>
+						<td>
+							<input type="text" name="UpdataID"required="required"ng-model="UpdataGoods.Good_ID"/>
+						</td>
+					</tr>
+					<tr>
+						<td>商品的名字</td>
+						<td>
+							<input type="text" name="UpdataName" required="required" ng-model="UpdataGoods.Good_name"/>
+						</td>
+					</tr>
+					<tr>
+						<td>商品的库存</td>
+						<td>
+							<input type="text" name="UpdataCounts"required="required"ng-model="UpdataGoods.Good_count"/>
+						</td>
+					</tr>
+					<tr>
+						<td>商品的价格</td>
+						<td>
+							<input type="text" name="UpdataPrice"required="required"ng-model="UpdataGoods.Good_price"/>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+						<button class="btn btn-primary" type="submit">确认修改</button>
+						</td>
+					</tr>
+				</table>
+				</form>
+			</div>
+		</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script>
+			var shopcars=angular.module('shopcars',[]);
+			shopcars.controller("shopcarsCtl",function($scope,$http){
+				$http.get("shopcars.php").success(function(response){
+					$scope.Goods=response;
+				});
+				$scope.getAllCounts=function(){
+					var sumCounts=0;
+					for(var t=0;t<($scope.Goods.length);t++){
+						sumCounts+=parseInt($scope.Goods[t].Good_count);
+					}
+					return sumCounts;
+				};
+				$scope.getAllPrices=function(){
+					var sumPrices=0;
+					for(var t=0;t<($scope.Goods.length);t++){
+					sumPrices+=parseInt($scope.Goods[t].Good_count)*parseFloat($scope.Goods[t].Good_price);
+					};
+					return sumPrices;
+				};
+				$scope.DeleteGoods=function(ID){
+					var	t=confirm("确定删除？");
+				if(t==true){
+					var data1={msg:"neirong"};
+					var Goodid={params:{GoodID:ID}};
+					$http.post("Delete.php",data1,Goodid).success(function(){
+						window.location.href="index.html"
+					});
+				}
+				};
+				$scope.UpdataGood=function(ID){
+				var	t=confirm("确定修改？");
+				if(t==true){
+					$scope.updataGoods=true;
+					var cid=-1;
+					for(var k=0; k<$scope.Goods.length;k++){
+						if($scope.Goods[k].Good_ID=ID){
+							cid=k;
+							break;
+						}
+					};
+					$scope.UpdataGoods=$scope.Goods[cid];
+				}
+				};
+				$scope.DeleteAll=function(){
+					$http.get("DeleteAll.php").success(function(){
+					window.location="index.html";
+				});
+				}
+			});
+		</script>
+	</body>
+</html>
