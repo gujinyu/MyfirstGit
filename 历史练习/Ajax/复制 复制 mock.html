@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/mock.js"></script>
+	</head>
+	<body>
+		<table border="1px">
+			<tr>
+				<td>请输入用户名</td>
+				<td><input type="text" id="username"></td>
+			</tr>
+			<tr>
+				<td>请输入密码</td>
+				<td><input type="password" id="userpwd"></td>
+				
+			</tr>
+			<tr>
+				<td colspan="2"><button onclick="Ajaxlogin()">提交</button></td>
+			</tr>
+		</table>
+		<p id="p"></p>
+	</body>
+	
+	<script>
+	  function Ajaxlogin(){
+		var username=document.getElementById("username").value;
+		var userpwd=document.getElementById("userpwd").value;
+		var xhr= new XMLHttpRequest();
+		   xhr.open("post","http://localhost:3000/api/login");
+		   xhr.send(null);
+		   
+		   xhr.onreadystatechange=function(){
+		   	if(xhr.readyState==4&&xhr.status==200){
+		   		var loginJSON=JSON.parse(xhr.responseText);
+		   		for(var t=0;t<loginJSON.length;t++){
+		   				if((loginJSON[t]['username']==username)&&(loginJSON[t]['userpwd']==userpwd)){
+		   					document.getElementById("p").innerHTML="登陆成功";
+		   					return;
+		   				}
+		   		}
+		   		document.getElementById("p").innerHTML="登陆失败"
+		   	}
+		   }
+		  }
+	</script>
+</html>

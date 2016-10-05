@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-3.1.1.js"></script>
+	</head>
+	<body>
+		<script>
+			$(function(){
+				$.ajax({
+				method:"get",
+				url:"http://192.168.6.4:88/A/a.php?r="+Math.random(),
+			    dataType:"jsonp",
+			    jsonp:'jsonpcallback',
+				success:function(data){
+					      // data=JSON.parse(data);
+					 alert(data["id"]);
+				}
+					
+					
+				});
+				
+			});
+		</script>
+	</body>
+</html>
+     <!--PHP-->
+		<!--<?php
+		  $arr=array("id"=>"12","name"=>"h5");
+		  echo $_GET['jsonpcallback']."(".json_encode($arr).")";
+		?>-->

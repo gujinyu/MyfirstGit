@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>使用原型来创建对象</title>
+	</head>
+	<body>
+		  <script>
+		  /**
+		   * 把相同的属性和方法都放入原型里去
+		   */
+		  	function Person(){
+		  		
+		  	};
+		  	
+		  	Person.prototype.name="h6";
+		  	Person.prototype.age="25";
+		  	Person.prototype.friends=['Jack','JOne'];
+		  	Person.prototype.sayName=function(){
+                this.name;
+		  	}
+		  	
+		  	var p1=new Person();
+		  	var p2=new Person();
+		  	/**
+		  	 * 改变p1的age
+		  	 * 
+		  	 */
+		  	document.write(p1.age+"   "+p2.age+"<br/>");
+		  	   p1.age=30;
+		  	document.write(p1.age+"   "+p2.age+"<br/>");  
+		  	/**
+		  	 * 改变p1的friends
+		  	 * 本意只想修改person1的friends，但是却导致person2的friends属性值也改变了
+		  	 * 结合构造方法和原型方法
+		  	 *    1、对象的不同值放入构造方法
+		  	 *    2、相同部分原型
+		  	 * 比如学生的年龄、地址、体重、爱好等不同部分放入构造方法中
+		  	 * 学生的所在班级、所学科目、任课老师放入原型中
+		  	 */
+		  document.write(p1.friends+"   "+p2.friends+"<br/>");
+		     p1.friends.push("ROSE");
+		  document.write(p1.friends+"   "+p2.friends);
+		 
+		 
+		  	
+		  </script>
+	</body>
+</html>

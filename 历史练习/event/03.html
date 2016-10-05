@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				
+			}
+		</style>
+	</head>
+	<body onload="a(event)">
+		<button id="btn">按钮</button>
+		<script>
+			/*document.onkeypress=function(e){
+				alert(e);
+			}
+			*/
+		/*document.getElementById("btn").onclick=function(e){
+				alert(e);
+			}*/
+			
+			/*function  a(e){
+				alert(e);
+			}*/
+			
+			document.onmousedown=function(e){
+				if(e.button==0){
+					alert("鼠标左键！")
+				}
+				if(e.button==1){
+					alert("滚轮！")
+				}
+				if(e.button==2){
+					alert("右键")
+				}
+			}
+		</script>
+	</body>
+</html>

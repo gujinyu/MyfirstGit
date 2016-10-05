@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text"  id="userName" />
+		<select id="province">
+			<option value="北京">北京</option>
+			<option value="上海">上海</option>
+			<option value="广州">广州</option>
+			
+		</select>
+		<script>
+			document.getElementById("userName").onselect=function(){
+				
+			}
+			
+			document.getElementById("province").onchange=function(){
+				document.getElementById("userName").innerHTML=this.value;
+			}
+			document.getElementById("userName").innerText="sda"
+		</script>
+	</body>
+</html>

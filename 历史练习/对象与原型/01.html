@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * 任何一个对象下都有__proto__，这是属性就是指向该对象的原型对象
+		 * 对象的原型对象下包含两部分 
+		 *    __proto__：对象的原型对象的原型对象
+		 *    constructor:对象的原型对象的构造器  
+		 */
+			
+			function Person(){
+				this.name="h5";
+				
+			}
+			
+			var p1=new Person();
+			//p1.constructor=Person;
+			
+			//alert(p1.__proto__);//获取p1的原型对象
+			alert(p1.__proto__==Person);
+			//alert(p1.__proto__.constructor);//p1的原型对象的构造器  
+			//alert(p1.__proto__.__proto__);//p1的原型对象的原型对象（object）
+			
+		</script>
+	</body>
+</html>

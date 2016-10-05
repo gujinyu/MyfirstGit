@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>子类的原型指向父类的原型</title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * 子类只能继承父类的原型的属性和方法
+		 * 不能继承父类构造方法中的属性和方法
+		 */
+			function Pet(){
+				this.kind="Pet";
+				this.sayHello=function(){
+					return "hello";
+				}
+			}
+			
+			Pet.prototype.name="haha";
+			Pet.prototype.getName=function(){
+				return this.name;
+			}
+			
+			function Dog(){
+				this.likebone=function(){
+					return "Dog like bone!";
+				}
+			}
+			Dog.prototype=Pet.prototype;//子类的原型对象等于父类的原型对象
+			Dog.prototype.constructor=Dog;//设置子类的原型对象中的constructor指向子类的构造方法
+			//Pet.prototype.constructor=Pet;
+			
+			var dog1=new Dog();
+			//alert(dog1.getName());
+			//alert(dog1.kind);
+			alert(dog1.constructor);
+			alert(new Pet().constructor);
+		</script>
+	</body>
+</html>

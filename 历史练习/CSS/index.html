@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			ul li{
+				list-style: none;
+				display: inline-block;
+				margin-left: 10px;
+				background:red;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>资讯动态</li>
+			<li>产品世界</li>
+			<li>市场营销</li>
+		</ul>
+	</body>
+	<script>
+		/*function $(id){
+			return document.getElementById(id);
+		}
+		
+		function over(r){
+			r.style.background="blue";
+		}
+		function out(r){
+			r.style.background="red"
+		}
+		*/
+		var lis=document.getElementsByTagName("li");
+		for(var t=0;t<lis.length;t++){
+			lis[t].onmouseover=function(){
+				this.style.background="blue";
+			};
+			lis[t].onmouseout=function(){
+				this.style.background="red";
+			}
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+		 <style type="text/css">
+        li{
+            list-style: none;
+        }
+        .head{
+            background-color: blue;
+        }
+        .member{
+            border-color: greenyellow;
+            border-width: 1px;
+            border-style: solid;
+        }
+    </style>
+	</head>
+	<body>
+		<div>
+		    <ul id="QQTab">
+		        <li >我的好友</li>
+		        <li >王明<br/>丽水<br/>陈明<br/>普惠<br/></li>
+		        <li>黑名单</li>
+		        <li>刘明<br/>彭俊<br/>胡福<br/>李虎<br/></li>
+		        <li>陌生人</li>
+		        <li>回魂<br/>胡俊<br/></li>
+		    </ul>
+		</div>
+		<script>
+			/*$(function(){
+				$("ul li:even").attr("class","head");
+				$("ul li:odd").hide().attr("class","member");;
+				$("ul li:even").click(function(){
+					$("ul li:odd").slideUp();
+					$(this).next().toggle({function(){
+						$(this).slideDown()
+					},
+					function(){
+						$(this).slideUp()
+					}
+					})
+				})
+			})*/
+			$(function(){
+				$("ul li:even").attr("class","head");
+				$("ul li:odd").hide().attr("class","member");
+				$("ul li:even").click(function(){
+					$(this).next().show("fast")
+					       .siblings(".member").hide("fast");
+				})
+			})
+		</script>
+	</body>
+</html>

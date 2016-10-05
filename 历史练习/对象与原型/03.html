@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>	
+		/**
+		 * 1、实现继承的一种方法：apply
+		 * 就是在子类中调用父类的方法
+		 */
+		/**
+		 * 第一步：定义父类的构造方法
+		 */
+		function Pet(name,age,gender){
+				this.name=name;
+				this.age=age;
+				this.gender=gender;
+				this.haveFood=function(){
+					console.log("pet like food!");
+				}		
+			}	
+		/**
+		 * 第二步：让子类继承父类
+		 * 就是使用apply方法，让父类的构造方法在子类中执行
+		 */
+		function Dog(name2,age2,gender2){
+			//父类的构造方法应用于当前对象
+			Pet.apply(this,[name2,age2,gender2]);
+			this.likeBone=function(){	
+				alert("like bone");
+			}
+		}
+		
+		/**
+		 * 第三步：测试
+		 */		
+		var dog=new Dog("hah",10,'gender');
+		    alert(dog.name);
+		  dog.haveFood();
+	
+		function Cat(name2,age2,gender2){
+			//父类的构造方法绑定到当前对象
+			Pet.bind(this,name2,age2,gender2)();
+			likeFish=function(){
+				alert("like fish");
+			}			
+		}	
+		
+		function Pig(name2,age2,gender2){
+			//当前对象调用父类的构造方法
+			Pet.call(this,name2,age2,gender2);
+			likeSleep=function(){
+				alert("like sleep");
+			}			
+		}	
+		</script>
+	</body>
+</html>
+

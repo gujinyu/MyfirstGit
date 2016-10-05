@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			var s = "i love h5,I LOVE gH5 dsds";
+			var p = /(g*)h5/ig;
+			var result;
+			while((result = p.exec(s)) != null) {
+				document.writeln(result + "  ");
+				document.write(result.index + "<br/>")
+			}
+			document.write(RegExp.input + "<br/>"); //被匹配的字符串
+			document.write(RegExp.lastMatch + "<br/>")
+			document.write(RegExp.leftContext + "<br/>");
+			document.write(RegExp.rightContext + "<br/>");
+			document.write("RegExp.lastParen="+RegExp.lastParen);
+		</script>
+	</body>
+
+</html>

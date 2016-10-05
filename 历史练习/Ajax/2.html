@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var xhr=new XMLHttpRequest();
+		xhr.open("get","2.txt",true);
+		xhr.send();
+		xhr.onreadystatechange=function(){
+			alert(xhr.status+":"+xhr.statusText);
+		}
+	</script>
+</html>

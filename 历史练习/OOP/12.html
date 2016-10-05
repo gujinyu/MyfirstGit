@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>配置对象的属性不可删除</title>
+	</head>
+
+	<body>
+		<script>
+			"use strict"; //启用严格模式
+			var t=23;
+			  m=34;
+			function Student(name, age, address, weight, hobby, friends) {
+				this.age = age,
+					this.name = name,
+					this.address = address,
+					this.weight = weight,
+					this.hobby = hobby,
+					this.friends = friends
+			}
+
+			Student.prototype = {
+				"classNO": "701",
+				"Teacher": "liuhua",
+				"Subject": ['H5+CSS3', 'JS', 'Node.js', "Bootstrap", 'JQuery'],
+				"getName": function() {
+					return this.name;
+				}
+
+			}
+			var s1 = new Student("czf", "23", "昌平", "75", ['登山', '打羽毛球'], ['TOM', "JACK"]);
+			Object.defineProperty(s1, 'name', {
+				configurable: false //配置s1对象的name属性不可配置：不可删除
+			});
+		//	delete s1.name;
+
+			for(var t in s1) {
+				document.write(t + '<br/>');
+			}
+		</script>
+	</body>
+
+</html>

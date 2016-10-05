@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			var str=window.location.search;
+			var str1=str.substring(1);
+			var arr=str1.split("&");
+			document.write(arr[0]+"  "+arr[1]+"<br/>");
+			var nameArr=arr[0].split("=");
+			document.write(nameArr[0]+":"+nameArr[1]+"  ");
+			var pwdArr=arr[1].split("=");
+			document.write(pwdArr[0]+":"+pwdArr[1]+"<br/>");
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

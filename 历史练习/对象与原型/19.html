@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>apply</title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * 改变方法作用域:apply call bind
+		 * 方法A.apply(对象B，参数数组)：方法A应用于对象B
+		 * 方法A.call(对象B，参数1,参数2...):对象B调用方法A
+		 * 方法A.bind(对象B,'参数1','参数2'...)():把方法A绑定到对象B
+		 * apply、call、bind都定义在函数原型对象中，而所有的函数都会指向函数原型对象，
+		 * 所以所有的函数的函数都可以调用这三种方法
+		 * 
+		 */
+	     function A(){
+	     	this.getName=function(name,age){
+	     		return name+"   "+age;
+	     	}
+	     }	     
+	     var a1=new A();
+	  //   alert(a1.getName());   
+	     function B(){   	
+	     }
+			var b1=new B();
+			//alert(a1.getName.apply(b1,['czf2',33]));
+		    //alert(a1.getName.call(b1,'czf2',33))
+			alert(a1.getName.bind(b1,'czf2','33')());
+		</script>
+	</body>
+</html>

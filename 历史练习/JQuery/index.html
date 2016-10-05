@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+	<body>
+		  <table>
+	    <tr>
+	        <td>全部权限</td>
+	        <td>操    作</td>
+	        <td>已获权限</td>
+	    </tr>
+	    <tr style="text-align: center">
+	        <td>
+	
+	          <label><select id="first" multiple  size="9">
+	              <option value="0">安装卸载</option>
+	              <option value="1">分配权限</option>
+	              <option value="2">查询数据</option>
+	              <option value="3">修改数据</option>
+	              <option value="4">删除数据</option>
+	              <option value="5">浏览数据</option>
+	              <option value="6">创建用户</option>
+	              <option value="7">数据备份</option>
+	          </select></label>
+	        </td>
+	
+	        <td>
+	
+	            <label><input id="add" type="button" value=">"></label>
+	
+	<br/>
+	      <label><input id="addAll" type="button" value=">>"></label>
+	            <br/>
+	
+	            <label><input id="remove" type="button" value="<" ></label>
+	            <br/>
+	
+	            <label><input id="removeAll" type="button" value="<<" ></label>
+	            <br/>
+	        </td>
+	        <td>
+	            <label><select id="second" multiple  size="9">
+	                <option value="-1">数据还原</option>
+	
+	            </select></label>
+	        </td>
+	
+	    </tr>
+	    <tr>
+	<td>
+	
+	</td>
+	    </tr>
+	</table>
+	<script>
+		$(function(){
+			$("#add").click(function(){
+				$("#first option:selected").eq(0).clone().appendTo($("#second"));
+			});
+			$("#addAll").click(function(){
+				$("#first option:selected").appendTo($("#second"));
+			});
+			$("#remove").click(function(){
+				$("#second option:selected").eq(0).appendTo($("#first"));
+			});
+			$("#removeAll").click(function(){
+				$("#second option:selected").appendTo($("#first"));
+			});
+		})
+	</script>
+	</body>
+</html>

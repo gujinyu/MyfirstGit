@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--构造函数模式
+			1、解决了代码重复的问题
+			2、解决了数据类型不明确的问题
+	    存在的问题
+	              每个相同的方法都有在每个实例上重新创建一遍。
+		-->
+		<script>
+			function Person(name,age,height,weight){
+				this.name=name;
+				this.age=age;
+				this.height=height;
+				this.weight=weight;
+				this.sayName=function(){
+					console.log(this.name);
+				}
+			}
+			var p2=new Person("s1","23",'172','60');
+		   var p3=new Person("s1","23",'172','60');
+		   
+		   
+			//alert(p2.height);
+			alert(p2 instanceof Object);
+			alert(p2 instanceof Person);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript" src="js/angular.js"></script>
+
+<body>
+	<div ng-app="" ng-init="books=[{langguage:'java',price:23},{langguage:'javascript',price:56},{langguage:'c++',price:78},{langguage:'C#',price:45},]">
+		<input type="text" ng-model="bookName">
+		<ul>
+			<li ng-repeat="book in books | filter:{langguage:bookName} | orderBy:'price'">
+				{{book.langguage}}:{{book.price}}
+			</li>
+		</ul>
+		<table  border='1px'>
+			<tr>
+				<td>书名</td>
+				<td>价格</td>
+			</tr>
+			<tr  ng-repeat="book in books | filter:{langguage:bookName} | orderBy:'price'">
+				<td>
+					{{book.langguage}}
+				</td>
+				<td>
+					{{book.price}}
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+</html>

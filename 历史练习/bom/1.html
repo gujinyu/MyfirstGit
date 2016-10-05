@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>点我进来</title>
+		
+	</head>
+	<body>
+		<p>
+			还有<span id="span">5</span>秒进入下个页面
+		</p>
+		<script>
+			/*document.write(document.title+"<br/>");
+			document.write(document.URL+'<br/>');
+			document.write(document.referrer);*/
+			var referURI=document.referrer;
+				
+			if(referURI.search('2.html')<0){
+				document.write("您不是从2页面进入当前页面的，5秒钟后自动跳回");
+				setTimeout("javascript:location.href='2.html'",'5000');
+			}
+			var s=document.getElementById("span");
+		var i=5;
+			function changeSpan(){
+				i--;
+				s.innerHTML=i;
+				if(i==0){
+					
+					clearInterval(id);
+				}
+			}
+			var id=setInterval('changeSpan()',1000)
+		</script>
+	</body>
+</html>

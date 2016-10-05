@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/**
+			 * splice(index,many):
+			 * 1、删除数组：第一个参数表示从哪个下标开始删除，
+			 * 第二个删除的个数
+			 *第三个参数表示要添加的项的集合
+			 */
+			/*var arr=['a','b','c',1,2,3];
+			arr.splice(2,2);
+			alert(arr);*/
+			
+			var even=[1,3,4,6,8,5,21,34,57,89,90,23];
+			for(t in even){
+			for(var t=0;t<=even.length;t++){
+			 if (even[t]%2!==0){
+			 	even.splice(t,1)
+			 }
+			}
+			}
+			alert(even)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

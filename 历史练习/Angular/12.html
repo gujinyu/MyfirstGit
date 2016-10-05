@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/angular.js">
+			
+		</script>
+	</head>
+	<body>
+		<div ng-app="myApp" ng-controller="number">
+			<h2>我的笔记</h2>
+			<textarea cols="35" rows="10" ng-model="wordsNumber"></textarea>
+			<p>
+				<button ng-click="save()">保存</button>
+				<button ng-click="clear()">清除</button>
+			</p>
+			<p>
+				字符数:
+				<span ng-bind="left()"></span>
+			</p>
+		</div>
+		<script type="text/javascript">
+			var myApp = angular.module("myApp",[]);
+			myApp.controller("number",function($scope){
+				$scope.wordsNumber="";
+				$scope.left=function(){
+					return 100-$scope.wordsNumber.length;
+				}
+				$scope.save=function(){
+					alert("Save");
+				};
+				$scope.clear=function(){
+					$scope.wordsNumber="";
+				};
+			});
+		</script>
+		
+	</body>
+</html>

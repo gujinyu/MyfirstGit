@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<script type="text/javascript" src="js/angular.js"></script>
+</head>
+<body>
+	<div ng-app="myapp" ng-controller="myController">
+		<form name="studentForm" method="post">
+			<table>
+				<tr>
+					<td>姓</td>
+					<td>
+					<input type="text" name="lastName" ng-model="lastName" required>
+					<span style="color: red" ng-show="studentForm.lastName.$dirty&&studentForm.lastName.$invialid">
+						<span ng-show="studentForm.lastName.$error.required">必须填写姓</span>
+					</span>
+					</td>
+				</tr>
+				<tr>
+					<td>名</td>
+					<td>
+					<input type="text" name="firstName" ng-model="firstName" required>
+					<span ng-show="studentForm.firstName.$dirty&&studentForm.firstName.$invialid">
+						<span ng-show="studentForm.firstName.$error.required">
+							必须填写名
+						</span>
+					</span>
+					</td>
+				</tr>
+				<tr>
+					<td>电子信箱</td>
+					<td>
+					<input type="text" name="email" ng-model="email" required>
+					<span ng-show="studentForm.email.$dirty&&studentForm.email.$invialid">
+						<span ng-show="studentForm.email.$error.email">
+							必须填写邮件
+						</span>
+					</span>
+					</td>
+				</tr>
+				<tr>
+					<td><button ng-click="reset()">重置</button></td>
+					<td><button ng-disabled="studentForm.firstName.$dirty&&studentForm.firstName.$invalid||studentForm.lastName.$dirty&&studentForm.lastName.$invialid||studentForm.email.$dirty&&studentForm.email.$invialid" ng-click="submit()">提交</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	var myapp=angular.module("myapp",[]);
+	myapp.controller('myController',function($scope){
+		$scope.reset=function () {
+			 $scope.firstName="jinyu"; 
+			 $scope.lastName="gu";
+			 $scope.email="gujinyu1995@qq.com"
+		}
+		$scope.reset();
+		$scope.submit=function(){
+			alert("提交数据");
+		}
+		
+	});
+</script>
+</html>

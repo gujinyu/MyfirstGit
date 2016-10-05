@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.1.1.min.js"></script>
+	</head>
+	<body>
+		<button id="btn">显示</button>
+		<div id="div">
+			我爱中国<br/>
+			我爱中国<br/>
+			我爱中国<br/>
+			我爱中国<br/>
+			我爱中国<br/>
+			我爱中国<br/>
+			我爱中国<br/>
+			我爱中国<br/>
+			我爱中国<br/>
+			我爱中国<br/>
+		</div>
+		<script>
+			/*$(function(){
+					var mark=true;
+				$("#btn").click(function(){
+					if(mark==true){
+						$("#div").hide(3000);
+						mark=false;
+						setTimeout(function(){
+							$("#btn").html("隐藏");
+						},2500);
+					}else{
+						$("#div").show(2500);
+						mark=true;
+						$(this).html("显示");
+						setTimeout(function(){
+							$("#btn").html("显示");
+						},2500);
+					}
+				})
+			});*/
+			$(function(){
+				$("#btn").click(function(){
+					/*$("#div").hide(3000,function(){
+						$("#div").show(3000);
+					});*/
+					$("#div").toggle(2000,function(){
+						$("#btn").html("隐藏")
+					})
+				})
+			})
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--//1、使用字面量创建对象 json对象
+			若干个键值对组成	
+			1、数据类型不明确，object
+			2、相同的源代码就比较多，不利于代码的维护，代码的重复率高
+		-->
+		<script>
+			var person={
+				"name":"afeng",
+				"age":"18",
+				'height':'172',
+				'weight':'70',
+				'hobby':function(){
+					alert("做出一手好中国菜！");
+				},
+				'sayHello':function(){
+					alert("Hello,H5！");
+				}
+			}		
+		document.write(person.name+"  "+person['age']);
+		person.hobby();	
+		person.sayHello();
+		//动态的给对象添加属性和行为 
+		person.address="北京昌平";
+		person.sport=function(){
+			alert("喜欢的运动是爬山！")
+		};
+		//如果想创建相同的一个对象，则代码要重复
+			var person2={
+				"name":"afeng",
+				"age":"18",
+				'height':'172',
+				'weight':'70',
+				'hobby':function(){
+					alert("做出一手好中国菜！");
+				}
+				
+			}
+		//如果相同的对象个数比较多，那么相同的源代码就比较多，不利于代码的维护，代码的重复率高
+		alert(typeof person);//数据类型不明确，object
+			
+		</script>
+	</body>
+</html>

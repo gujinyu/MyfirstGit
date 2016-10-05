@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<body>
+		<div class="a" id="saw">这是一个calss的DIV标签</div>
+		<script>
+			 $("#saw").bind("mouseenter mouseout",{'1':'北京','2':'上海'},function(event){
+             //alert(event.type);//获取事件的名称（类型）
+              //alert($(event.target).html());//事件源
+            // alert(event.data['1']);//获取事件数据
+         });
+		</script>
+	</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+		  <style type="text/css">
+        .All{
+           width:700px;
+            height: 50px;
+        border: 1px solid olivedrab;
+        }
+    </style>
+
+	</head>
+	<body>
+		<form>
+<div class="All">
+
+   <label><input type="checkbox" value="用户管理" id="UserAll" >用户管理</label><br/>
+    
+        <input type="checkbox" value="修改用户信息" id="UserModifyPower"/>修改用户信息
+    <input type="checkbox" value="添加用户信息"     id="UserInsertPower" />添加用户信息
+   <input type="checkbox" value="删除用户信息"      id="UserDeletePower" />删除用户信息
+    <input type="checkbox" value="浏览用户信息"     id="UserSelectPower"/>浏览用户信息
+</div>
+    <div class="All">
+
+        <label><input type="checkbox" value="商品大分类管理" id="CategoryAll" >商品大分类管理</label><br/>
+        
+            <input type="checkbox" value="修改商品大分类信息" id="CategoryModifyPower"/>修改商品大分类信息
+            <input type="checkbox" value="添加商品大分类信息" id="CategoryInsertPower" />添加商品大分类信息
+            <input type="checkbox" value="删除商品大分类信息" id="CategoryDeletePower" />删除商品大分类信息
+            <input type="checkbox" value="浏览商品大分类信息" id="CategorySelectPower"/>浏览商品大分类信息
+    </div>
+       <div class="All">
+
+        <label><input type="checkbox" value="商品小分类管理" id="ClassAll" >商品小分类管理</label><br/>
+        
+            <input type="checkbox" value="修改商品小分类信息" id="ClassModifyPower"/>修改商品小分类信息
+            <input type="checkbox" value="添加商品小分类信息" id="ClassInsertPower" />添加商品小分类信息
+            <input type="checkbox" value="删除商品小分类信息" id="ClassDeletePower" />删除商品小分类信息
+            <input type="checkbox" value="浏览商品小分类信息" id="ClassSelectPower"/>浏览商品小分类信息
+    </div>
+    <div class="All">
+
+        <label><input type="checkbox" value="订单管理" id="OrderAll" >订单管理</label><br/>
+        
+            <input type="checkbox" value="修改订单信息" id="OrderModifyPower"/>修改订单信息
+            <input type="checkbox" value="添加订单信息" id="OrderInsertPower" />添加订单信息
+            <input type="checkbox" value="删除订单信息" id="OrderDeletePower" />删除订单信息
+            <input type="checkbox" value="浏览订单信息" id="OrderSelectPower"/>浏览订单信息
+    </div>
+
+    <div class="All">
+
+        <label><input type="checkbox" value="商品详细信息管理" id="DetailAll" >商品详细信息管理</label><br/>
+        
+            <input type="checkbox" value="修改商品详细信息" id="DetailModifyPower"/>修改商品详细信息
+            <input type="checkbox" value="添加商品详细信息" id="DetailInsertPower" />添加商品详细信息
+            <input type="checkbox" value="删除商品详细信息" id="DetailDeletePower" />删除商品详细信息
+            <input type="checkbox" value="浏览商品详细信息" id="DetailSelectPower"/>浏览商品详细信息
+    </div>
+
+    <div class="All">
+
+        <label><input type="checkbox" value="公告管理" id="AnnouncementAll" >公告管理</label><br/>
+        
+            <input type="checkbox" value="修改公告信息" id="AnnouncementModifyPower" />修改公告信息
+            <input type="checkbox" value="添加公告信息" id="AnnouncementInsertPower" />添加公告信息
+            <input type="checkbox" value="删除公告信息" id="AnnouncementDeletePower" />删除公告信息
+            <input type="checkbox" value="浏览公告信息" id="AnnouncementSelectPower"/>浏览公告信息
+    </div>
+</form>
+     <script>
+     	//1、选中所有的大分类，对应的小分类都要选中
+     	//2、不选中对应的大分类，该大分类的小分类也不要选中
+     	//3、选中任何一个小分类，对应的大分类被选中
+     	//4、所有的小分类都没选中，则对应发的大分类也不选中
+     	   $(function(){
+     	   	//选中所有id的属性值以All结尾的元素
+     	   //alert($("[id$='All']").length)	;
+     	   //获取大分类下的小分类的开头，截取id的属性值，从0到长度减3
+     	   	$("[id$='All']").click(function(){
+     	   		 var idAll=$(this).attr("id");
+     	   		 //获取对应小操作的id的开始部分
+     	   		  var smallStartId=idAll.substr(0,idAll.length-3);
+     	   		  $("[id^="+smallStartId+"]").prop("checked",$(this).prop("checked"));
+   	   		  
+     	   	});
+     	   	
+     	   	$("[id$='Power']").click(function(){
+     	   			//alert($(this).attr("id"));
+     	   			var smallTitle=$(this).attr("id");
+     	   			var bigtitleStart=smallTitle.substr(0,smallTitle.length-11);
+     	   			//遍历以bigtitleStart开头和Power结尾所有小分类
+     	   			var t=false;
+     	   			var allSmalls=$("[id^="+bigtitleStart+"][id$='Power']");
+     	   			for(var k=0;k<allSmalls.length;k++){
+     	   				  //alert($(allSmalls[k]).prop("checked"));
+     	   				 if($(allSmalls[k]).prop("checked")==true){
+     	   				 	t=true;
+     	   				 	break;
+     	   				 }
+     	   			}	
+     	   			
+     	   			$("[id="+bigtitleStart+"All]").prop("checked",t);
+     	   		})
+     	   })
+     	
+     </script>
+	</body>
+</html>

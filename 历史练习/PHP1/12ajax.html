@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var xhr=new XMLHttpRequest();
+			xhr.open("get","10array.php?r="+Math.random());
+			xhr.send(null);
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4&&xhr.status==200){
+					var arrtext=xhr.responseText;
+					var arr=JSON.parse(arrtext);
+					alert(arr);
+					/*for(var t=0;t<arr.length;t++){
+						var tr=document.createElement("tr");
+						var td1=document.createElement("td");
+						var td2=document.createElement("td");
+						td1.innerHTML=arr[t]['id'];
+						td2.innerHTML=arr[t]['name'];
+						tr.appendChild(td1);
+						tr.appendChild(td2);
+						document.getElementById("table").appendChild(tr);
+					}*/
+				}
+			}
+		</script>
+	</body>
+</html>

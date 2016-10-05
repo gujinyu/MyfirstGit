@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/mock.js"></script>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var data=Mock.mock({
+			"list|1-10":[{
+				"id|+1":1
+			}]
+		});
+		alert(JSON.stringify(data.list,null,8));
+		
+	</script>
+</html>

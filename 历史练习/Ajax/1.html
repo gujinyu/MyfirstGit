@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src=""/>
+		&nbsp;
+	</body>
+	<script>
+		var xhr=new XMLHttpRequest();
+		alert(xhr.readyState)
+		xhr.open("get","1.text");
+		alert(xhr.readyState)
+		xhr.send();
+		alert(xhr.readyState)
+		xhr.onreadystatechange=function(){
+			alert(xhr.readyState);
+		}
+	</script>
+</html>

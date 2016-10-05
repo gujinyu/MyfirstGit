@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.1.1.min.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			$.ajax({
+				url:"JQueryphp.php",
+				data:"id=12&Name=gujinyu",
+				type:"get",
+				success:function(data){
+					alert(data);
+				},
+				error:function(){
+					alert("ajax error")
+				}
+			});
+			
+		</script>
+	</body>
+</html>

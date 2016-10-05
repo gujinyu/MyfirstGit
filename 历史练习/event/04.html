@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+			#img{
+				top:0;
+				left:0;
+				position:absolute ;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="../img/arecord.png" id="img"/>
+		<script>
+		var img=document.getElementById("img");
+			document.onmousemove=function(e){
+				var x=e.clientX;
+				var y=e.clientY;
+				img.style.top=y+"px";
+				img.style.left=x+"px";
+				
+			}
+			
+		</script>
+	</body>
+</html>

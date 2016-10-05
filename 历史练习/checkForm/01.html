@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>使用String的属性和方法验证表单数据</title>
+		<style>
+			span {
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form action="02.html" method="get">
+			<table>
+				<tr>
+					<td>请输入用户名：</td>
+					<td><input type="text" name="username" id="username" /></td>
+					<td><span id="usernameSpan"></span></td>
+				</tr>
+				<tr>
+					<td>请输入密码：</td>
+					<td><input type="password" name="userpwd" id="userpwd" /></td>
+					<td><span id="userpwdSpan"></span></td>
+				</tr>
+				<tr>
+					<td>再次输入密码：</td>
+					<td><input type="password" name="reuserpwd" id="reuserpwd" /></td>
+					<td><span id="reuserpwdSpan"></span></td>
+				</tr>
+				<tr>
+					<td>输入身份证ID：</td>
+					<td><input type="text" name="userID" id="userID" /></td>
+					<td><span id="userIDSpan"></span></td>
+				</tr>
+				<tr>
+					<td>输入email：</td>
+					<td><input type="text" name="userEmail" id="userEmail" /></td>
+					<td><span id="userEmailSpan"></span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="提交" id="submitID" /></td>
+				</tr>
+			</table>
+
+		</form>
+		<script>
+			var usernamecheck=false;
+			var usernpwdcheck=false;;
+            var userrepwdcheck=false; ;
+            var userIDcheck=false; ;
+            var userEmailcheck=false; ;
+			function $(id) {
+				return document.getElementById(id);
+			};
+			//名字的非空检测
+			$("username").onblur = function() {
+				var Uservalue = this.value;
+				if(Uservalue == '') {
+
+					$("usernameSpan").innerHTML = "用户名不能为空！";
+					return false;
+					//名字的内容是否符合格式要求	：(可包含a-z,0-9和_)
+				} else {
+					for(var t = 0; t < Uservalue.length; t++) {
+						var c = Uservalue.charAt(t);
+						if((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || (c == '_')) {
+
+						} else {
+							$("usernameSpan").innerHTML = "用户名只包含a-z,0-9和_";
+							usernamecheck = false;
+							return false;
+						}
+					}
+				}
+				usernamecheck = true;
+				return true;
+			};
+			$("username").onfocus = function() {
+					$("usernameSpan").innerHTML = "";
+				}
+				//检测密码长度是否符合要求
+			$("userpwd").onblur = function() {
+				if(this.value.length < 8) {
+					$("userpwdSpan").innerHTML = "密码的长度不能小于8位";
+					usernpwdcheck = false;
+					return false;
+				}
+				usernpwdcheck = true;
+				return true;
+			}
+			$("userpwd").onfocus = function() {
+					$("userpwdSpan").innerHTML = "";
+				}
+				//检测输入密码和再一次输入密码是否一致
+			 $("reuserpwd").onblur = function() {
+				if(this.value != $("userpwd").value) {
+					$("reuserpwdSpan").innerHTML = "两次输入的密码不一致！";
+					userrepwdcheck=false;
+					return false;
+				}
+				userrepwdcheck=true;
+				return true;
+			}
+			$("reuserpwd").onfocus = function() {
+					$("reuserpwdSpan").innerHTML = "";
+				}
+				//检测身份证是否符合要求
+			 $("userID").onblur = function() {
+				var userid = this.value
+				if(userid.length != 18) {
+					$("userIDSpan").innerHTML = "身份证号码只能是18位！";
+					userIDcheck =false;
+					return false;
+				} else {
+					for(var t = 0; t < 17; t++) {
+						if(isNaN(userid[t])) { //有一个非数字
+							$("userIDSpan").innerHTML = "身份证号码前17位只能由数字构成！";
+							userIDcheck =false;
+							return false;
+						}
+					}
+					if(isNaN(userid[17])) {
+						if(userid[17] != 'X') {
+							$("userIDSpan").innerHTML = "身份证号码第18位只能由数字或者X构成！";
+							userIDcheck =false;
+							return false;
+						}
+					}
+				}
+				userIDcheck =true;
+				return true;
+			}
+			$("userID").onfocus = function() {
+				$("userIDSpan").innerHTML = "";
+			}
+
+			//emain的简单验证
+			$("userEmail").onblur = function() {
+				var email = this.value;
+				if(email.indexOf('@') > -1 && email.indexOf('.') > -1) {
+
+				} else {
+					$("userEmailSpan").innerHTML = "电子信箱的格式不正确!";
+					this.style.border = "1px solid red";
+					this.value = "";
+					//this.select();//选中内容
+					//this.focus();
+					userEmailcheck=false;
+					return false;
+				}
+				userEmailcheck=true;
+				return true;
+			}
+			$("userEmail").onfocus = function() {
+				$("userEmailSpan").innerHTML = "";
+			}
+
+			$("submitID").onclick = function() {
+				var t=userIDcheck&&userEmailcheck&&usernamecheck&&usernpwdcheck&&userrepwdcheck;
+				if(t==false){
+					alert("资料填写有误，不能提交数据！")
+				}
+				return t;//如果是t=false;则会中断提交数据
+
+			}
+		</script>
+	</body>
+
+</html>

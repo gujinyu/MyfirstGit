@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js" ></script>
+		<style>
+			div {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<form>
+			<table border="1" id="table">
+				<tr>
+					<td>ID</td>
+					<td>Name</td>
+				</tr>
+			</table>
+			
+		</form>
+		<button id="btn">添加数据</button>
+		<div>
+			<table>
+			<h2>要添加的信息</h2>
+			<tr>
+				<td>ID</td>
+				<td><input type="text" name="ID"/></td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<td><input type="text" name="NAME"/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="提交"/></td>
+			</tr>
+		</table>
+		</div>
+		
+		<script>
+		$(function(){
+			$.ajax({
+				type:"get",
+				url:"../Server/student.php",
+				success:function(data){
+					var json1=JSON.parse(data);
+					$.each(json1, function(index,ele) {
+					var tr=$("<tr><td>"+ele.id+"</td><td>"+ele.name+"</td></tr>");
+					$("#table").append(tr);
+				     });
+				}
+			});
+		})
+		$("#btn").click(function(){
+				$("div").css("display","block")
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var person={
+				'_ID':'430121313131212112',//形式上是私有的，实际上是公有的
+				get MyClassID(){
+						return this._ID;
+				},
+				set MyClassID(value){
+					
+					
+					this._ID=value;
+				}
+			}
+			
+			//alert(person['_ID']);
+			person.MyClassID="21653652143521431";//赋值
+			alert(person.MyClassID);//取值
+		</script>
+	</body>
+</html>

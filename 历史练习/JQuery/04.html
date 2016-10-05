@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+	</head>
+	<body>
+		<button id="btn">点击</button>
+		<script>
+			$(function(){
+				$("#btn").bind({"click":function(){
+					alert("click");
+				},
+				"keypress":function(e){
+					alert(e.keyCode);
+					if(e.keyCode==113){
+						alert("我按下了Q")
+					}
+				}
+				})
+			})
+		</script>
+	</body>
+</html>

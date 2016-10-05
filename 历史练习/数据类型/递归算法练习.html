@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+		function getSum(i){
+			if(i%2==0){
+				alert("必须是奇数");
+				return;
+			}
+			if(i==1){
+				return 1;
+			}else{
+				return getSum(i-2)+i;
+			}
+			}
+			alert(getSum(13));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

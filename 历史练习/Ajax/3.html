@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h2>理解Ajax中的局部刷新</h2>
+		<h4>只改变span中的内容，不会改变和刷新整个页面</h4>
+		<button id="btn">改变span中的innerHTML</button><br/>
+		<span id="spanDemo">旧的内容</span>
+		<span id="spanDemo2">旧的内容2</span>
+	</body>
+	<script>
+		function partRefresh(){
+			 var xhr=new XMLHttpRequest();
+			 xhr.open("get","1.txt",true);
+			 xhr.send();
+			 xhr.onreadystatechange=function(){
+			 	 for(var m=0;m<=1000;m++)
+                 for(var n=0;n<=100;n++)
+			 	if(xhr.readyState==4&&xhr.status==200){
+			 		document.getElementById("spanDemo").innerHTML=xhr.responseText;
+			 	}
+			 }
+		}
+		 function changeContext(){
+        document.getElementById("spanDemo2").innerHTML="内容被改变";
+    }
+		document.getElementById("btn").onclick=function(){
+			partRefresh();
+			changeContext();
+		}
+	</script>
+</html>

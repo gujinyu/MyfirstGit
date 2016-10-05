@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>用正则表达式验证表单数据</title>
+		<style>
+			span {
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form action="02.html" method="get">
+			<table>
+				<tr>
+					<td>请输入用户名：</td>
+					<td><input type="text" name="username" id="username" /></td>
+					<td><span id="usernameSpan"></span></td>
+				</tr>
+				<tr>
+					<td>请输入密码：</td>
+					<td><input type="password" name="userpwd" id="userpwd" /></td>
+					<td><span id="userpwdSpan"></span></td>
+				</tr>
+				<tr>
+					<td>再次输入密码：</td>
+					<td><input type="password" name="reuserpwd" id="reuserpwd" /></td>
+					<td><span id="reuserpwdSpan"></span></td>
+				</tr>
+				<tr>
+					<td>输入身份证ID：</td>
+					<td><input type="text" name="userID" id="userID" /></td>
+					<td><span id="userIDSpan"></span></td>
+				</tr>
+				<tr>
+					<td>输入email：</td>
+					<td><input type="text" name="userEmail" id="userEmail" /></td>
+					<td><span id="userEmailSpan"></span></td>
+				</tr>
+				<tr>
+					<td>输入真实姓名：</td>
+					<td><input type="text" name="realName" id="realName" /></td>
+					<td><span id="realNameSpan"></span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="提交" id="submitID" /></td>
+				</tr>
+			</table>
+		</form>
+		<script>
+			function $(id) {
+				return document.getElementById(id);
+			}
+			//1、用户的非空检测
+			$("username").onblur = function() {
+				if(this.value == '') {
+					$("usernameSpan").innerHTML = "用户名不能为空!";
+				} else {
+					//2、名字的内容是否符合格式要求	：(可包含a-z,0-9和_)；
+					var p = /^\w+$/; //[a-z0-9_]; 
+					if(!(p.test(this.value))) {
+						$("usernameSpan").innerHTML = "用户名可包含a-z,0-9和_!";
+					}
+				}
+			};
+			$("username").onfocus = function() {
+				$("usernameSpan").innerHTML = "";
+			}
+			//3、//检测密码长度是否符合要求
+			$("userpwd").onblur=function(){
+				var p=/^\w{8,}$/;
+				if(!p.test(this.value)){
+					$("userpwdSpan").innerHTML="密码的长度不能小于8";
+				}
+			};
+			$("userpwd").onfocus=function(){
+				$("userpwdSpan").innerHTML="";
+			};
+			//4、检测输入密码和再一次输入密码是否一致
+			//5、检测身份证是否符合要求
+			$("userID").onblur=function(){
+				var id=/^\d{18}$|^\d{17}X$/;
+				if(!(id.test(this.value))){
+					$("userIDSpan").innerHTML="身份证号码不正确！";
+				}
+			};
+			$("userID").onfocus=function(){
+				$("userIDSpan").innerHTML="";
+			}
+			//6、//emain的简单验证
+			$("userEmail").onblur=function(){
+				var e= /^([\w\.\-]+)@([\w\.\-]+)\.([\w]{2,4})$/;
+				if(!e.test(this.value)){
+					$("userEmailSpan").innerHTML="Email格式不正确！";
+				}
+			};
+			$("userEmail").onfocus=function(){
+				$("userEmailSpan").innerHTML="";
+			};
+			
+			$("realName").onblur=function(){
+				var p=/^[\u4e00-\u9fa5]{2,}$/;
+				if(!p.test(this.value)){
+				$("realNameSpan").innerHTML="姓名只能是汉字！";
+				}
+			}
+			$("realName").onfocus=function(){
+				$("realNameSpan").innerHTML="";
+			}
+		</script>
+	</body>
+
+</html>

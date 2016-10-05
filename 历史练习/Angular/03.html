@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="//cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+	</head>
+	<body>
+		<div ng-app="myapp" ng-controller="mycontrol"\ >
+			名字：{{course.name}}<br />
+			年龄：{{course.age}}<br />
+			财富：{{course.result()}}万
+			
+		</div>
+	</body>
+	<script>
+		var myapp = angular.module("myapp",[]);
+		
+		myapp.controller("mycontrol",function($scope){
+			$scope.course={
+				"name":"古金雨",
+				"age":"21",
+				"result":function(){
+					return this.age*100;
+				}
+			}
+		})
+	</script>
+</html>

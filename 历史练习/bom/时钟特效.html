@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			var i=0;
+			function showInfro(){
+				document.write(i+"<br/>");
+				i++;
+				if(i==10){
+					clearInterval(id);
+				}
+			}
+			var id= window.setInterval("showInfro()",1000);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

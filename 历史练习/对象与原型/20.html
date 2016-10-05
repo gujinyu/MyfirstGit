@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>apply</title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * jS实现继承的第二种方法
+				 *  1、父类的一个对象作为子类的原型对象
+				 * var p1=new Parent();
+				 *   Child.prototype=p1;
+				    2、在父类的一个对象中添加constructor属性，使其指向子类的构造方法
+					  p1.constructor=Child;
+			 */
+			function Pet(name2, age2, gender2) {
+				this.name = name2;
+				this.age = age2;
+				this.gender = gender2;
+				this.haveFood = function() {
+					console.log("Pet like food!");
+				}
+			}
+			function Dog() {
+				this.likeBone = function() {
+					alert("like bone");
+				}
+			}
+			var p1 = new Pet("hah", '4', 'male');
+			Dog.prototype = p1; //父类的一个对象作为子类的原型对象
+			p1.constructor = Dog; //在父类的对象中添加constructor属性，使其指向Dog
+			var dog1 = new Dog();
+			dog1.haveFood();
+			alert(dog1.constructor === Dog); //false
+			alert(dog1.constructor === Pet); //dog是由Pet创建的，数据类型不明确
+		</script>
+	</body>
+
+</html>

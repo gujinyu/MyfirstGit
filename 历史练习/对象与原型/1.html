@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var pet=Object.create(null,{
+				type:{
+					value:'Pet'
+				},
+				 address:{
+				 	value:'ssss'
+				 }
+			});
+			pet.getType=function(){
+				return this.type;
+			}
+			var cat=Object.create(pet,{
+				name:{
+					value:'h5',
+					configurable:false,
+					writable:true,
+					enumerable:true
+				},
+				age:{
+					value:23,
+					configurable:false,
+					writable:true,
+					enumerable:true
+				}
+			});
+			alert(cat.type)
+			alert(cat.address)
+		</script>
+	</body>
+</html>

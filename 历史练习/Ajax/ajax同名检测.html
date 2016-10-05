@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input onkeyup="CheckName()" id="name"/>
+		<span id="tip"></span>
+	</body>
+	<script>
+		function CheckName(){
+			var xhr=new XMLHttpRequest();
+			var Namevalue=document.getElementById("name").value
+			xhr.open("POST","http://localhost:3000/api/checksameName");
+			xhr.send();
+			xhr.onreadystatechange=function(){
+				if(xhr.status==200&&xhr.readyState==4){
+					var Namejosn=JSON.parse(xhr.responseText);
+					for(var i=0; i<=Namejosn.name.length;i++){
+						if(Namejosn.name[i]==Namevalue){
+							document.getElementById("tip").innerHTML="错误";
+							return;
+						}
+					}
+					document.getElementById("tip").innerHTML="正确";
+				}
+			}
+		}
+	</script>
+</html>

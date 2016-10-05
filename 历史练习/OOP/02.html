@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--采用工厂模式创建对象
+			就是把相同的属性和行为封装到一个函数中	
+			工厂模式就解决了代码重用问题，但是还是没解决数据类型不明确的问题
+		-->
+		<script>
+			  function Person(name,age,height,weight){
+			  	var person=new Object();//创建一个object对象
+			  	//添加对象的属性并赋值
+			  	person.name=name;
+			  	person.age=age;
+			  	person.height=height;
+			  	person.weight=weight;
+			  	return person;
+			  }
+			  var p1=Person("s2","23",'172','66');
+			  var p2=Person("s12","13",'172','66');
+			 // alert(p1.name);
+			 // altre(typeof p1);
+			//  window.alert(typeof p1);//数据类型不明确 
+			  alert(p1 instanceof Object);
+			alert(p1 instanceof Person);
+		</script>
+	</body>
+</html>

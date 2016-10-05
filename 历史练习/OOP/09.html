@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>枚举对象的属性</title>
+	</head>
+
+	<body>
+		<script>
+			var property2 = {
+				name: 'afeng',
+				age: '12',
+				sayAge: function() {
+					return this.age;
+				}
+			};
+			//遍历对象的属性和属性值
+			for(var p in property2) {
+				document.write(p + "   " + property2[p] + "<br/>");
+			}
+			//获取某个对象的所有属性
+			var keys = Object.keys(property2);
+			for(var t = 0; t < keys.length; t++) {
+				document.write(keys[t] + "<br/>")
+			}
+			//需要注意的是，for-in循环遍历原型属性和自有属性，
+			//而Object.keys()只返回自有属性。
+			
+			//采用对象.propertyIsEnumerable(属性名)的方法检测某个对象的某个属性是否可枚举
+			alert(property2.propertyIsEnumerable('age'));//true
+			alert(property2.propertyIsEnumerable('toString'));//false
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+		 <style type="text/css">
+        .All{
+           width:700px;
+            height: 50px;
+        border: 1px solid olivedrab;
+        }
+    </style>
+
+	</head>
+	<body>
+	   <form>
+		<div class="All">
+		
+		   		<label><input type="checkbox" value="用户管理" id="UserAll" >用户管理</label><br/>
+		        <input type="checkbox" value="修改用户信息"     id="UserModifyPower"/>修改用户信息
+		    	<input type="checkbox" value="添加用户信息"     id="UserInsertPower" />添加用户信息
+		   		<input type="checkbox" value="删除用户信息"     id="UserDeletePower" />删除用户信息
+		    	<input type="checkbox" value="浏览用户信息"     id="UserSelectPower"/>浏览用户信息
+		</div>
+		    <div class="All">
+		
+		        <label><input type="checkbox" value="商品大分类管理" id="CategoryAll" >商品大分类管理</label><br/>
+		        
+		            <input type="checkbox" value="修改商品大分类信息" id="CategoryModifyPower"/>修改商品大分类信息
+		            <input type="checkbox" value="添加商品大分类信息" id="CategoryInsertPower" />添加商品大分类信息
+		            <input type="checkbox" value="删除商品大分类信息" id="CategoryDeletePower" />删除商品大分类信息
+		            <input type="checkbox" value="浏览商品大分类信息" id="CategorySelectPower"/>浏览商品大分类信息
+		    </div>
+		       <div class="All">
+		
+		        <label><input type="checkbox" value="商品小分类管理" id="ClassAll" >商品小分类管理</label><br/>
+		        
+		            <input type="checkbox" value="修改商品小分类信息" id="ClassModifyPower"/>修改商品小分类信息
+		            <input type="checkbox" value="添加商品小分类信息" id="ClassInsertPower" />添加商品小分类信息
+		            <input type="checkbox" value="删除商品小分类信息" id="ClassDeletePower" />删除商品小分类信息
+		            <input type="checkbox" value="浏览商品小分类信息" id="ClassSelectPower"/>浏览商品小分类信息
+		    </div>
+		    <div class="All">
+		
+		        <label><input type="checkbox" value="订单管理" id="OrderAll" >订单管理</label><br/>
+		        
+		            <input type="checkbox" value="修改订单信息" id="OrderModifyPower"/>修改订单信息
+		            <input type="checkbox" value="添加订单信息" id="OrderInsertPower" />添加订单信息
+		            <input type="checkbox" value="删除订单信息" id="OrderDeletePower" />删除订单信息
+		            <input type="checkbox" value="浏览订单信息" id="OrderSelectPower"/>浏览订单信息
+		    </div>
+		
+		    <div class="All">
+		
+		        <label><input type="checkbox" value="商品详细信息管理" id="DetailAll" >商品详细信息管理</label><br/>
+		        
+		            <input type="checkbox" value="修改商品详细信息" id="DetailModifyPower"/>修改商品详细信息
+		            <input type="checkbox" value="添加商品详细信息" id="DetailInsertPower" />添加商品详细信息
+		            <input type="checkbox" value="删除商品详细信息" id="DetailDeletePower" />删除商品详细信息
+		            <input type="checkbox" value="浏览商品详细信息" id="DetailSelectPower"/>浏览商品详细信息
+		    </div>
+		
+		    <div class="All">
+		
+		        <label><input type="checkbox" value="公告管理" id="AnnouncementAll" >公告管理</label><br/>
+		        
+		            <input type="checkbox" value="修改公告信息" id="AnnouncementModifyPower" />修改公告信息
+		            <input type="checkbox" value="添加公告信息" id="AnnouncementInsertPower" />添加公告信息
+		            <input type="checkbox" value="删除公告信息" id="AnnouncementDeletePower" />删除公告信息
+		            <input type="checkbox" value="浏览公告信息" id="AnnouncementSelectPower"/>浏览公告信息
+		    </div>
+		</form>
+		<script>
+			$(function(){
+				$(".All").find("input:eq(0)").click(function(){
+					$(this).parent().siblings("input").prop("checked",$(this).prop("checked"));
+				});
+				$(".All").children("input").click(function(){
+					var t=false;
+					var inputs=$(this).parent().children("input");
+					for(i=0;i<inputs.length;i++){
+						var gu=$(inputs[i]).prop("checked");
+						if(gu==true){
+							t=true;
+							break;
+						}
+					}
+					$(this).parent().find("input:eq(0)").prop("checked",t);//主键
+				})
+			})
+		</script>
+	</body>
+</html>

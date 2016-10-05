@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>学生管理系统</title>
+		<script type="text/javascript" src="../js/jquery-3.1.1.js" ></script>
+		<style>
+			#addDiv,#updateDiv{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<table id="Stutable" border="1">
+		<tbody id="tbody">
+			<tr>
+				<td>学生的ID</td>
+				<td>学生的NAME</td>
+				<td>操作</td>
+			</tr>
+			</tbody>
+		</table>
+		<div id="addDiv">
+			<h3>输入添加学生的信息</h3>
+			 <table>		 
+			 	<tr>
+			 		<td>请输入学生的ID</td>
+			 		<td><input type="text" name="id" id="stuid"/></td>
+			 	</tr>
+			 	<tr>
+			 		<td>请输入学生的姓名</td>
+			 		<td><input type="text" name="name" id="stuname"/></td>
+			 	</tr><tr>
+			 		<td></td>
+			 		<td><button id="add">提交</button></td>
+			 	</tr>	 	
+			 </table>
+		</div>
+		<div id="updateDiv">
+			<h3>输入添加要修改学生的信息</h3>
+			 <table>
+			 	<tr>
+			 		<td>请输入学生的ID</td>
+			 		<td><input type="text" name="id" id="stuid" readonly/></td>
+			 	</tr>
+			 	<tr>
+			 		<td>请输入学生的姓名</td>
+			 		<td><input type="text" name="name" id="stuname"/></td>
+			 	</tr><tr>
+			 		<td></td>
+			 		<td><button id="update">修改</button></td>
+			 	</tr>
+			 	
+			 </table>
+		</div>
+		<button id="addbtn">填写添加信息</button>
+		<script>
+		function deleteStu(a){	   
+			 
+			var id=$(a).attr("id");
+			 var t=confirm("真的删除ID为"+id+"的学生信息吗?");
+			 if(t==true){
+			$.get("../Server/deleteStudents.php",{"id":id},function(data){		
+				$("tr").remove("#"+id+"tr");
+			});
+			}
+			}
+			
+			function updateStu(a){
+				$("#updateDiv").css("display","block");
+				$("#addbtn").css("display","none");
+				$("#updateDiv #stuid").val(a.id);
+				$("#updateDiv #stuname").val(a.name);
+			}
+		
+		function getAll(){	
+			
+				
+				
+				}
+		
+			$(function(){
+				$.ajax({
+					type:"get",
+					url:"../Server/getAllStudents.php?r="+Math.random(),
+					async:true,
+					success:function(data,textStatus){
+						       var jsonData=JSON.parse(data);
+						       window.student=[];
+						   $.each(jsonData, function(index,ele) {
+						   	   window.student[index]=ele
+	 var tr=$("<tr id='"+ele.id+"tr'><td>"+ele.id+"</td><td>"+ele.name+"</td><td><button onclick='deleteStu(this)' id='"+ele.id+"'>删除</button><button onclick='updateStu(student["+index+"])' >修改</button></td></tr>");
+						   	  $("#Stutable").append(tr);				   	  
+						   });			  
+					}			
+				});
+				
+				$("#addbtn").click(function(){
+					$("#addDiv").css("display","block");
+					$(this).css("display","none");
+					
+				});
+				
+				$("#add").click(function(){
+					 var addid=$("#stuid").val();
+					   var addname=$("#stuname").val();
+					$.ajax({
+					  
+					type:"get",
+					url:"../Server/addStudents.php",
+					data:{"id":addid,"name":addname},
+					success:function(data){
+						  var json=JSON.parse(data);
+						  var tr=$("<tr id='"+json.id+"tr'><td>"+json.id+"</td><td>"+json.name+"</td><td><button onclick='deleteStu(this)' id='"+json.id+"'>删除</button><button>修改</button></td></tr>")
+						   	  $("#Stutable").append(tr);
+						   	  $("#addbtn").css("display","block");
+					},
+					error:function(){
+						alert("error");
+					}
+				});
+					$("#addDiv").css("display","none");
+				});
+					
+				$("#update").click(function(){
+					 var id=$("#updateDiv #stuid").val();
+					 var index=0;
+					  for(var t=0;t<window.student.length;t++){
+					  	if(window.student[t]['id']==id){
+					  		  index=t;
+					  		break;
+					  	}
+					  }
+					  index++;
+					  var name=$("#updateDiv #stuname").val();
+					  $.post("../Server/updateStudent.php",{"id":id,"name":name},function(data){				  	
+					  	$("tr:eq('"+index+"') td:eq(1)").html(name);
+					  	$("#updateDiv").css("display","none");
+					  	$("#addbtn").css("display","block");
+					    alert("修改成功！");				    
+				})
+				})
+			})
+			
+		</script>
+	</body>
+</html>

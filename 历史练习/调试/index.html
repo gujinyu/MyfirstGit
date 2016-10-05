@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="numberText" />
+		<span id="textSpan"></span>
+		<!--自定义异常：
+		10-100-->
+		<script>    
+			var textDemo=document.getElementById("numberText");
+			var myException=function(){
+				        var tvalue=textDemo.value;
+				        if(tvalue=='') throw "值不能为空！";
+				        if(isNaN(tvalue)) throw "不是一个数字！";
+				        if(tvalue>100) throw "数值大于100";
+				          if(tvalue<10) throw "数值小于10";
+				          
+			}
+			textDemo.onblur=function(){
+				try{
+					myException();
+				}catch(e){
+					//alert(e);
+					document.getElementById("textSpan").innerHTML=e;
+				}			
+			}
+			textDemo.onfocus=function(){
+				document.getElementById("textSpan").innerHTML="";
+			}
+			/*window.onerror=function(esg,url,linenumber){
+				alert(esg);
+			}*/
+			
+		</script>
+		
+	</body>
+</html>

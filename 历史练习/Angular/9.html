@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<script type="text/javascript" src="js/angular.js"></script>
+</head>
+<body>
+	<!--<div ng-app="myapp" ng-controller="ajaxCon">
+		{{hello}}
+	</div>-->
+	<table ng-app="myapp" ng-controller="ajaxCon">
+		<tr>
+			<td>firstName</td>
+			<td>lastName</td>
+		</tr>
+		<tr ng-repeat="emp in hello.employees">
+			<td>{{emp.firstName}}</td>
+			<td>{{emp.lastName}}</td>
+		</tr>
+		
+	</table>
+</body>
+<script type="text/javascript">
+	var myapp=angular.module('myapp', []);
+	myapp.controller('ajaxCon', function($scope,$http){
+		$http.get("http://localhost:3000/api/2").success(function (responseText) {
+
+			$scope.hello=responseText;
+		})
+		
+	})
+</script>
+</html>

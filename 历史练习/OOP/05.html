@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--构造函数模式
+			1、解决了代码重复的问题
+			2、解决了数据类型不明确的问题
+	    存在的问题
+	              每个相同的方法都有在每个实例上重新创建一遍。
+	    解决问题的方法的一种：
+	    就被函数作为全局函数。虽然解决了多个相同实例的共同的方法只创建一次
+	    新的问题
+	    1、对象需要定义很多方法，那么就要定义很多全局函数，自定义的引用类型也没有封装可言了。
+	    2、如果类似的方法很多，易造成全局变量污染，而且不易管理，名字也容易冲突
+	问题的解决：原型方法来创建对象
+	  1、该方法只能被Person对象调用
+	  2、多个相同实例的共同的方法只创建一次
+	  3、不造成全局变量污染
+	只要把  多个相同实例的共同的方法放到原型里去
+	
+	    
+		-->
+		<script>
+			function Person(name,age,height,weight){
+				this.name=name;
+				this.age=age;
+				this.height=height;
+				this.weight=weight;
+				
+			}
+		    var p1=new Person("czf","23","175","65");
+		    //获取函数（类）Person的原型对象
+		        var p=Person.prototype;
+		        //多个相同实例的共同的方法放到原型里去
+		        p.sayName=function(){
+		        return this.name;
+		        }
+		    alert(p);
+		</script>
+	</body>
+</html>

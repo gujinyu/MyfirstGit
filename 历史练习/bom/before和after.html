@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div">
+			
+		</div>
+	</body>
+	<script>
+		function insertAfter(newTag,oldTag){
+			var parentTag=oldTag.parentNode;
+			if(parentTag.lastChild==oldTag){
+				parentTag.appendChild(newTag);
+			}else{
+				parentTag.insertBefore(newTag,oldTag.nextSibling);
+			}
+		}
+		
+		var div=document.getElementById("div");
+		var p=document.createElement("p");
+		    p.innerHTML="新建的一个标签p";
+		    div.appendChild(p);
+		    var imgTag=document.createElement("img");
+		        imgTag.src="img/t01130eebb94255f4de.jpg";
+		        div.appendChild(imgTag);
+		        
+		var img2=document.createElement("img");
+		    img2.src="img/7.13-02.jpg";
+		    insertAfter(img2,p);
+	</script>
+</html>

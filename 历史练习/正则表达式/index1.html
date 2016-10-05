@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			span{
+				color: red;
+				font-size: 13px;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="index.html" method="get">
+			<table>
+				<tr>
+					<td>请输入用户名:</td>
+					<td>
+						<input type="text" name="username" id="username" />
+					</td>
+					<td><span id="usernameSpan"></span></td>
+				</tr>
+				<tr>
+					<td>请输入密码:</td>
+					<td><input type="password" name="reuserpwd" id="userpwd"/></td>
+				    <td><span id=userpwdSpan></span></td>
+				</tr>
+				<tr>
+					<td>请再次输入密码:</td>
+					<td><input type="password" name="userpwd" id="reuserpwd"/></td>
+				    <td><span id=reuserpwdSpan></span></td>
+				</tr>
+				<tr>
+				   <td>请输入身份证ID:</td>
+				   <td><input type="text" name="userid" id="userid"/></td>
+				   <td><span id="useridSpan"></span></td>
+				</tr>
+				<tr>
+					<td>请输入email:</td>
+					<td><input type="text" name="useremail" id="useremail" /></td>
+					<td><span id="useremailSpan"></span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="提交" id="submit"/></td>
+				</tr>
+			</table>
+			
+		</form>
+	</body>
+	<script>
+	    function $(id){
+	    	return document.getElementById(id);
+	    }
+	    //1、用户名的非空检测
+	    $("username").onblur=function(){
+	    	if
+	    }
+	    
+	</script>
+</html>

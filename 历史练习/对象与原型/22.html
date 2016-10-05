@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> 利用空对象作为中介+原型实现继承</title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * 1、定义一个父类
+			 */
+			function Pet() {
+
+			}
+			Pet.prototype.name = "czf";
+			/**
+			 * 2、定义一个F函数，内容为空
+			 */
+			function F() {
+
+			}
+			/**
+			 * 3、空对象的原型指向父类的原型
+			 * 
+			 */
+			F.prototype = Pet.prototype;
+			/***
+			 * 4、定义一个子类
+			 */
+			function Dog() {
+				this.age = 12;
+			}
+			/**
+			 * 5、子类的原型指向空对象
+			 */
+			var f1=new F();
+			Dog.prototype = f1;
+			f1.constructor=Dog;
+			
+			/**
+			 * 6、测试
+			 */
+			//alert(new Dog().name);
+			alert(new Dog().constructor)
+		</script>
+	</body>
+
+</html>

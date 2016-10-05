@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			var a = [23, 3, 45, 67, 12, 89, 90, 6];
+			//外层比较的趟数 n-1
+			for (var t = 1; t <= a.length - 1; t++) {
+				//内层每趟比较次数 n-t  
+				for (var h = 0; h < a.length - t; h++) {
+					//相邻的两个数比较
+					if (a[h] > a[h + 1]) {
+						var temp;
+						temp = a[h];
+						a[h] = a[h + 1];
+						a[h + 1] = temp;
+					}
+				}
+			}
+			alert(a);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

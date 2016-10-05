@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>构造方法+原型方法创建对象</title>
+	</head>
+
+	<body>
+
+		<script>
+			/**
+					 *   比如学生的姓名、年龄、地址、体重、爱好等不同部分放入构造方法中
+					  	  学生的所在班级、所学科目、任课老师放入原型中	  	 
+					 */
+			function Student(name, age, address, weight, hobby, friends) {
+				this.age = age,
+					this.name = name,
+					this.address = address,
+					this.weight = weight,
+					this.hobby = hobby,
+					this.friends = friends
+			}
+
+			Student.prototype = {
+				"classNO": "701",
+				"Teacher": "liuhua",
+				"Subject": ['H5+CSS3', 'JS', 'Node.js', "Bootstrap", 'JQuery'],
+				"getName": function() {
+					return this.name;
+				}
+
+			}
+
+			var s1 = new Student("czf", "23", "昌平", "75", ['登山', '打羽毛球'], ['TOM', "JACK"]);
+			var s2 = new Student("czf2", "18", "通州", "60", ['登山', '打羽毛球', 'GAME'], ['TOM', "JACK", "ROSE"]);
+		    s1.parents=['wanghush','guihua'];
+		    
+		    
+		    
+		/*	document.write(s1.hobby + "  " + s2.hobby + "<br/>");
+			s1.hobby = ['足球', '篮球'];
+			document.write(s1.hobby + "  " + s2.hobby + "<br/>");
+			document.write(s1.classNO + "  " + s1.Teacher + "<br/>");
+			document.write(s2.classNO + "  " + s2.Teacher + "<br/>");*/
+			alert(s1 instanceof Object);
+			alert(s1 instanceof Student);
+			
+		</script>
+	</body>
+
+</html>

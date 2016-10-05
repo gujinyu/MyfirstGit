@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>禁止扩展</title>
+	</head>
+
+	<body>
+		<script>
+			/*"use strict"; //启用严格模式*/
+			var t = 23;
+
+			function Student(name, age, address, weight, hobby, friends) {
+				this.age = age,
+					this.name = name,
+					this.address = address,
+					this.weight = weight,
+					this.hobby = hobby,
+					this.friends = friends
+			}
+
+			Student.prototype = {
+				"classNO": "701",
+				"Teacher": "liuhua",
+				"Subject": ['H5+CSS3', 'JS', 'Node.js', "Bootstrap", 'JQuery'],
+				"getName": function() {
+					return this.name;
+				}
+
+			}
+			var s1 = new Student("czf", "23", "昌平", "75", ['登山', '打羽毛球'], ['TOM', "JACK"]);
+      // Object.preventExtensions(s1);//s1不可以扩展
+      //Object.isSealed(s1);
+      //Object.seal(s1);//封印对象s1,只可以读和写，不可以删除和添加属性
+      //alert( Object.isSealed(s1));
+      Object.freeze(s1);
+      alert(Object.isFrozen(s1));
+      s1.gender="男";
+        for(var t in s1){
+        	console.log(t);
+        }
+			s1.name="h5";
+			alert(s1.name);
+		</script>
+	</body>
+
+</html>

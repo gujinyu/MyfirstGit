@@ -1,0 +1,13 @@
+div{
+    width: 400px;
+    height: 400px;
+    background-color: blue;
+    font-size: 14px;
+}
+@mixin center-block {
+    margin-left:auto;
+    margin-right:auto;
+}
+.demo{
+    @include center-block;
+}

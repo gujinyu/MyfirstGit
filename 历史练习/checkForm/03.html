@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//var reg1=new RegExp("h5","ig");
+			var reg1=/h5/ig;
+			  var s1="dhfhdfH5sad h5  adad h5 swewew";
+			//  alert(reg1.test(s1));
+			  //var s= reg1.exec(s1);
+			  var result;
+			while((result=reg1.exec(s1))!=null){
+			  	document.writeln(result+"  ");
+			  	document.write(result.index+"<br/>")
+			  }
+			//alert(reg1.exec(s1).length);
+			  //alert(s);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="//cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+	</head>
+	<body>
+		<div ng-app="" ng-init="foods=[{'name':'rice','hobby':'good'},{'name':'apple','hobby':'suger'}]">
+			<ul>
+				<li ng-repeat="food in foods">
+				<!--食物的名称：{{food.name}},食物的评价{{food.hobby}}-->
+				<p>食物的名称<span ng-bind="food.name"></span></p>
+				<p>食物的评价<span ng-bind="food.hobby"></span></p>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

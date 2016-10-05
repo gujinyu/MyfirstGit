@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			//var pattern = /8(.*)8/; //获取8..8 之间的任意字符
+			//var pattern = /8.*8/; 
+			//var str = 'This is 8google8';
+			//alert(pattern.test(str));
+			//var st=str.match(pattern);
+			/*var st=pattern.exec(str);
+			alert(st);
+		  	alert(st[0]); //google
+		  	alert(st[1]);
+		  	
+			alert(RegExp.$1); //得到第一个分组里的字符串内容*/
+
+			/*var pattern = /^([a-z]+)\s([0-9]{4,})$/i; //使用分组
+			var str = 'google 2012';
+			alert(pattern.exec(str)[0]); //google 2012
+			alert(pattern.exec(str)[1]); //google
+			alert(pattern.exec(str)[2]); //2012*/
+
+			/*var pattern = /\.\[\/b\]/; //特殊字符，用\符号转义即可
+			var str = '.[/b]';
+			alert(pattern.test(str));*/
+
+			var pattern = /^\d+/mg; //启用了换行模式
+			var str = '1.baidu\n2.google\n3.bing';
+			alert(str);
+			var result = str.replace(pattern, '#');
+			alert(result);
+		</script>
+	</body>
+
+</html>

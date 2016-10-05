@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			span{
+				color: red;
+				font-size: 13px;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="index.html" method="get">
+			<table>
+				<tr>
+					<td>请输入用户名:</td>
+					<td>
+						<input type="text" name="username" id="username" />
+					</td>
+					<td><span id="usernameSpan"></span></td>
+				</tr>
+				<tr>
+					<td>请输入密码:</td>
+					<td><input type="password" name="reuserpwd" id="userpwd"/></td>
+				    <td><span id=userpwdSpan></span></td>
+				</tr>
+				<tr>
+					<td>请再次输入密码:</td>
+					<td><input type="password" name="userpwd" id="reuserpwd"/></td>
+				    <td><span id=reuserpwdSpan></span></td>
+				</tr>
+				<tr>
+				   <td>请输入身份证ID:</td>
+				   <td><input type="text" name="userid" id="userid"/></td>
+				   <td><span id="useridSpan"></span></td>
+				</tr>
+				<tr>
+					<td>请输入email:</td>
+					<td><input type="text" name="useremail" id="useremail" /></td>
+					<td><span id="useremailSpan"></span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="提交" id="submit"/></td>
+				</tr>
+			</table>
+			
+		</form>
+	</body>
+	<script>
+	
+	        var usernamecheck=false;
+			var userpwdcheck=false;;
+            var userrepwdcheck=false; ;
+            var userIDcheck=false; ;
+            var userEmailcheck=false; ;
+		function $(id){
+			return document.getElementById(id);
+		}
+		//
+		$("username").onblur=function(){
+			var uservalue=this.value
+			if(this.value==""){
+				$("usernameSpan").innerHTML="用户名不能为空！";
+				return false;
+			}else{
+				for(var t=0; t<uservalue.length;t++){
+					var c=uservalue.charAt(t)
+					if((c>='a'&&c<='z')||(c>='0'&&c<='9')||(c=="_")){
+						
+					}else{
+						$("usernameSpan").innerHTML="用户名只能为a-z,0-9和_";
+						return false;
+					}
+					
+				}
+			}
+			usernamecheck=true;
+			return true;
+		};
+		$("username").onfocus=function(){
+			$("usernameSpan").innerHTML=""
+		};
+		//检测密码长度是否符合要求
+		$("userpwd").onblur=function(){
+			if(this.value.length<8){
+				$("userpwdSpan").innerHTML="密码长度不能低于8位";
+				return false;
+			}
+			userpwdcheck=true;
+			return true;
+		};
+		$("userpwd").onfocus=function(){
+			$("userpwdSpan").innerHTML="";
+		};
+		//检测两次密码是否输入一致
+		$("reuserpwd").onblur=function(){
+			if(this.value!=$("userpwd").value){
+				$("reuserpwdSpan").innerHTML="两次输入的密码不一致";
+			}
+			userrepwdcheck=true;
+			return false;
+		};
+		$("reuserpwd").onfocus=function(){
+			$("reuserpwdSpan").innerHTML="";
+		};
+		//检测身份证号格式是否正确
+		$("userid").onblur=function(){
+			var userid=this.value
+			if(userid.length!=18){
+				$("useridSpan").innerHTML="您输入的身份证号格式不正确";
+				return false;
+			}
+			else{
+				for(var t=0;t<17;t++){
+					if(isNaN(userid[t])){
+						$("useridSpan").innerHTML="身份证号码前17位只能由数字构成！";
+						return false;
+					}
+				}
+				if(isNaN(userid[17])&&userid[17]!="x"){
+						$("useridSpan").innerHTML="身份证号码第18位只能由数字或者X构成！";
+						return false;
+				}
+			}
+			userIDcheck=true;
+			return true;
+		};
+		$("userid").onfocus=function(){
+			$("useridSpan").innerHTML="";
+		};
+		//检测email格式是否正确
+		$("useremail").onblur=function(){
+			if(this.value.indexOf('@')>-1&&this.value.indexOf('.')>-1){
+				
+			}
+			else{
+				$("useremailSpan").innerHTML="您输入的email格式不正确";
+				return false;
+			}
+			userEmailcheck=true;
+			return true;
+		};
+		$("useremail").onfocus=function(){
+			$("useremailSpan").innerHTML="";
+		};
+		$("submit").onclick=function(){
+			var t=userEmailcheck&&userIDcheck&&usernamecheck&&userrepwdcheck&&userpwdcheck
+		    if(t==false){
+		    	alert(userEmailcheck);
+		    	alert(userIDcheck);
+		    	alert(usernamecheck);
+		    	
+		    }
+		    return t;
+		}
+		
+	</script>
+</html>

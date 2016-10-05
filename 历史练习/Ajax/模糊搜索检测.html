@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			ul li{
+				list-style: none;
+				width: 300;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="search" id="search" onkeyup="search()" />
+		<ul id="ul"></ul>
+	</body>
+	<script>
+		function search(){
+			var search=document.getElementById("search").value
+			var  xhr=new XMLHttpRequest();
+			
+				xhr.open("post","http://localhost:3000/api/search");
+				xhr.send();
+				xhr.onreadystatechange=function(){
+					var ul=document.getElementById("ul")
+					if(xhr.status==200&&xhr.readyState==4){
+					ul.innerHTML="";
+					var	searchText=JSON.parse(xhr.responseText);
+						for(var i=0; i<searchText.length;i++){
+							if(searchText[i].toLowerCase().indexOf(search.toLowerCase())>=0){
+								 var li=document.createElement("li");
+								 li.addEventListener("mouseover",function(){
+			 		 			this.style.backgroundColor="#ccc";
+			 		 		});
+			 		 		li.addEventListener("mouseout",function(){
+			 		 			this.style.backgroundColor="white";
+			 		 		});
+			 		 		
+			 		 		li.addEventListener("click",function(){
+			 		 			document.getElementById("search").value=this.innerHTML;
+			 		 		   ul.innerHTML="";
+			 		 		});
+								 li.innerHTML=searchText[i];
+								 ul.appendChild(li);
+							}
+						}
+					}
+				}
+			
+		}
+	</script>
+</html>

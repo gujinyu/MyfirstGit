@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		
+	</head>
+	<body>
+		<span id="span"></span>
+		<script>
+    function getShowDate(){
+    	var date1=new Date;
+		var year=date1.getFullYear();
+		var month=date1.getMonth()+1;
+		var day=date1.getDate();
+		var h=date1.getHours();
+		var m=date1.getMinutes();
+	    if(m<=9){
+	    	m="0"+m;
+	    }
+	    var s=date1.getSeconds();
+	    if(s<=9){
+	    	s="0"+s;
+	    }
+	    var dateStr=year+"年"+month+"月"+day+"日"+"   "+h+":"+m+":"+s;
+	    document.getElementById("span").innerHTML=dateStr;
+	    window.setTimeout("getShowDate()",1000);
+	   }
+	   getShowDate();
+		</script>
+	</body>
+</html>

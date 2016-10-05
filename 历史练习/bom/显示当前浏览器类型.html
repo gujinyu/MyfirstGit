@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+		/*	document.write(navigator.appName+"<br/>");
+			document.write(navigator.appVersion+"<br/>");
+			document.write(navigator.userAgent)*/
+			function getBrowerType(){
+				var infro=navigator.userAgent;
+				if(infro.search("Trenit")>-1){
+					return "IE";
+				}
+				if(infro.search("WebKit")>-1){
+					if(infro.search("Chrome")>-1){
+						return "Chrome";
+					}else{
+						return "Safari";
+					}
+				}
+				if(infro.search("Gecko")>-1){
+					return "FireFox";
+				}
+				if(infro.search("Presto")>-1){
+					return "Opear";
+				}
+			}
+			 document.write("您的浏览器为:"+getBrowerType());
+//			 document.write(navigator.userAgent)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

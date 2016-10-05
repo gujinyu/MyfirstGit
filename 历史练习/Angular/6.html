@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript" src="js/angular.js"></script>
+<body>
+	<div ng-app="myApp" ng-controller="myctr">
+		<h1>{{student.name}}的个人信息</h1>
+		<h2>年龄:{{student.age}}</h2>
+		<h2>地址:{{student.address}}</h2>
+		<h2>性别:{{student.gender}}</h2>
+		<input ng-model="pass" type="text">
+		<table>
+			<tr>
+				<td>科目</td>
+				<td>成绩</td>
+			</tr>
+			<tr ng-repeat="name in student.subject | filter:{SubjectName:pass}">
+				<td >
+					{{name.SubjectName}}
+				</td>
+				<td >
+					{{name.score}}
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+<script type="text/javascript">
+	var myApp=angular.module('myApp', []);
+	myApp.controller("myctr", function($scope){
+		$scope.student={
+			"name":"刘虎",
+			"age":'21',
+			"address":"小辛庄",
+			"gender":"男",
+			"subject":[
+			{"SubjectName":"java","score":"89"},
+			{"SubjectName":"h5","score":"89"},
+			{"SubjectName":"node","score":"89"},
+			{"SubjectName":"angular","score":"89"},
+			{"SubjectName":"css","score":"89"},
+			]
+		}
+		
+	})
+</script>
+</html>

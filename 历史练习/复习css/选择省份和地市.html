@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			var arr=new Array();
+			for(temp in arr){
+				
+			}
+			arr['广东省']=['广州','深圳','珠海'];
+			arr['湖北省']=['武汉','襄樊','赤壁'];
+			window.onload=function(){
+				var pro=document.getElementById("province");
+				for (temp in arr){
+					pro.add(new Option(temp,temp));
+				}
+			}
+			function setcity(){
+				var citySel=document.getElementById("city");
+				    citySel.options.length=1;
+				var pro1=document.getElementById("province").value;
+				if(pro1=="")  return;
+				for(var i=0;i<arr[pro1].length;i++){
+					citySel.add(new Option(arr[pro1][i],arr[pro1][i]))
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<select id="province" onchange="setcity()">
+			<option>--选择省会--</option>
+		</select>
+		<select id="city">
+			<option>--选择城市--</option>
+		</select>
+	</body>
+</html>

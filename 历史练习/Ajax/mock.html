@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/mock.js"></script>
+	</head>
+	<body>
+		<table border="1px" id="table">
+			<tr>
+				<td>雇员</td>
+				<td>年龄</td>
+				<td>衣服颜色</td>
+			</tr>
+		</table>
+	</body>
+	
+	<script>
+		 var mock1=Mock.mock("http://gujinyu",{  //模拟一个数据库
+			"employees|1-10":[{
+			"name":'@cname',
+			'age|1-100':50,
+			"color":'@color'
+			}]
+		});
+		var xhr=new XMLHttpRequest();//建立一个服务器请求
+		xhr.open("post","http://gujinyu"); //设置与服务器建立连接的参数
+		xhr.send();   //建立连接向服务器发送请求
+		xhr.onreadystatechange=function(){  //接受来自服务器的数据
+			if(xhr.readyState==4&&xhr.status==200){
+				var table=document.getElementById("table");
+				var json1=JSON.parse(xhr.responseText);
+				for(var t=0;t<=json1.employees.length;t++){
+					var tr=document.createElement("tr");
+					for(var k in json1.employees[t]){
+						var td=document.createElement("td");
+						td.innerHTML=json1.employees[t][k];
+						tr.appendChild(td);
+					}
+					table.appendChild(tr);
+				}
+			}
+		}
+	</script>
+</html>

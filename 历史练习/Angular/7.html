@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<script type="text/javascript" src="js/angular.js"></script>
+
+</head>
+<body>
+	<div ng-app="">
+		<input type="checkbox" ng-model="select"/>
+		<input type="text" name="userName" ng-disabled="!select"/></br>
+		<input type="checkbox" ng-model="all">全选/全不选</br>
+		<input type="checkbox" value="play game" ng-checked="all">swiimming
+		<input type="checkbox" value="eat" ng-checked="all">eat
+	
+		<div>
+			<p>单击按钮：实现自增</p>
+			<button ng-init="count=0" ng-click="count=count+1">单击</button>
+			单击的次数：{{count}}
+		</div>
+		<div>
+			<input type="checkbox" ng-model="myclick">
+			<p ng-click="myclick">点击</p>
+			<p ng-hide="myclick">选合适</p>
+			
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+		Object.prototype.bar = 1;
+	var foo = {goo: undefined};
+
+	foo.bar; // 1
+	'bar' in foo; // true
+
+	alert(foo.hasOwnProperty('bar')) // false
+	alert(foo.hasOwnProperty('goo')); // true
+</script>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script type="text/javascript" src="js/angular.js"></script>
+</head>
+<body>
+	<div class="container" ng-app="shopCarApp" ng-controller="shopController">
+		<table class="table table-hover">
+			<tr>
+				<td>商品编号</td>
+				<td>商品名称</td>
+				<td>商品库存</td>
+				<td>商品价格</td>
+				<td>该产品总价值</td>
+				<td>操作</td>
+			</tr>
+			<tr ng-repeat="good in goodslist">
+				<td>{{good.goodID}}</td>
+				<td>{{good.goodName}}</td>
+				<td>
+					<button class="btn btn-info" ng-click="good.goodcounts=good.goodcounts+1">+</button>
+					<input type="text" name="counts" id="counts" ng-model="good.goodcounts" />
+					<button class="btn btn-info" ng-click="good.goodcounts=good.goodcounts-1" ng-click="no()">-</button>
+				</td>
+				<td>{{good.goodPrice}}</td>
+				<td>{{good.goodPrice*good.goodcounts}}</td>
+				<td>
+				 <button class="btn btn-danger" ng-click="deleteAllGoodID(good.goodID)">下架该商品</button>
+				 <button class="btn btn-success" ng-click="modifyGoods(good.goodID)">修改该商品</button>
+				</td>
+			</tr>
+			<tr>
+				<td>上架商品的总数量</td>
+				<td>{{getAllGoodsCounts()}}</td>
+				<td>上架商品总价值</td>
+				<td>{{getAllPrices()}}</td>
+				<td>
+					<button class="btn btn-danger" ng-click="goodslist={}">清除所有上架商品</button>
+				</td>
+				<td><button class="btn btn-info">添加</button></td>
+			</tr>
+		</table>
+		<div ng-show="modifyDiv">
+			<table>
+				<tr>
+					<td>商品的ID</td>
+					<td>
+						<input type="text" ng-model="updateGood.goodID" />
+					</td>
+				</tr>
+				<tr>
+					<td>商品的名字</td>
+					<td>
+						<input type="text" ng-model="updateGood.goodName" />
+					</td>
+				</tr>
+				<tr>
+					<td>商品的库存</td>
+					<td>
+						<input type="text" ng-model="updateGood.goodcounts" />
+					</td>
+				</tr>
+				<tr>
+					<td>商品的价格</td>
+					<td>
+						<input type="text" ng-model="updateGood.goodPrice" />
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><button class="btn btn-primary" ng-click="modifyDiv=false">添加</button></td>
+				</tr>
+			</table>
+			
+		</div>
+	</div>
+	<script type="text/javascript">
+		var goods = [{
+			"goodID":1001,
+			"goodName":"iphone5",
+			"goodcounts":10,
+			"goodPrice":3500
+		   },
+		   {
+		   	"goodID":1002,
+			"goodName":"ipad",
+			"goodcounts":10,
+			"goodPrice":3500
+		   },
+		    {
+		   	"goodID":1003,
+			"goodName":"iphone7",
+			"goodcounts":10,
+			"goodPrice":3500
+		},
+		{
+			"goodID":1004,
+			"goodName":"MAC",
+			"goodcounts":10,
+			"goodPrice":3500
+		}
+		]
+		
+		var shopCarApp=angular.module('shopCarApp', []);
+		shopCarApp.controller("shopController",function ($scope) {
+			$scope.goodslist=goods;
+			$scope.modifyDiv = false;
+			//计算总的商品个数
+			$scope.getAllGoodsCounts=function(){
+				var sumCounts=0;
+				for(var t=0; t<$scope.goodslist.length;t++){
+					sumCounts+=parseInt($scope.goodslist[t].goodcounts);
+				}
+				return sumCounts;
+			};
+			//计算商品的总价值
+			$scope.getAllPrices=function(){
+				var sumPrices=0;
+				for(var t=0;t<$scope.goodslist.length;t++){
+					sumPrices+=parseInt($scope.goodslist[t].goodcounts)*parseFloat($scope.goodslist[t].goodPrice);
+				}
+				return sumPrices;
+			};
+			//下架指定的商品
+			$scope.deleteAllGoodID=function(id){
+				var cid=-1;
+			for(var k=0; k<$scope.goodslist.length;k++){
+				if($scope.goodslist[k].goodID==id){
+					cid = k;
+					break;
+				}
+			}
+			$scope.goodslist.splice(cid,1)
+			};
+			//修改商品信息
+			$scope.modifyGoods=function(id){
+				$scope.modifyDiv=true;
+				var cid=-1;
+				for(var k=0; k<$scope.goodslist.length; k++){
+					if($scope.goodslist[k].goodID==id){
+						cid=k;
+						break;
+					}
+				}
+				$scope.updateGood=$scope.goodslist[cid];
+			}
+		})
+	</script>
+</body>
+</html>

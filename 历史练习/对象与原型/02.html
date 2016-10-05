@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Person(name){
+				this.name=name	;	
+			}	
+			var p1=new Person("h6");
+			//获取Person类的原型对象：保存该类对象而共同属性和方法
+			//Person.prototype
+			alert(p1.__proto__===Person.prototype);
+		</script>
+	</body>
+</html>

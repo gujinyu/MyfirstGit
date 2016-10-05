@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+		<style>
+			ul li{
+				list-style: none;
+				float: left;
+				margin-right: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<ul id="ul">
+			
+		</ul>
+		<script>
+		
+			$(function(){
+				var json1="";
+				$.get("img.php?r="+Math.random(),function(data){
+					json1=JSON.parse(data);
+					deal();
+				});
+				function deal(){
+					var big01=json1[0]["big"];
+					var bigImg=$("<img src='"+big01+"'/>");
+					$("#div").append(bigImg);
+					//alert(bigImg)
+					$.each(json1, function(index,element) {
+						var li=$("<li><img src='"+element['small']+"'/></li>");
+						$("#ul").append(li)
+					});
+					$("#ul li").mouseover(function(){
+					var index1=$(this).index()+1;
+					//alert("index1");
+					$("#div img").attr("src","img/show"+index1+"_big.jpg")
+				})
+				};
+			})
+		</script>
+	</body>
+</html>

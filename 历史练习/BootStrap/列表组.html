@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+
+	<body>
+		<div class="container">
+			<ul class="list-group">
+				<li class="list-group-item">我是第一</li>
+				<li class="list-group-item">我是第二</li>
+				<li class="list-group-item">我是第三</li>
+				<li class="list-group-item">我是第四</li>
+				<li class="list-group-item">我是第五</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script>
+		// 声明 Person 类 
+		var Person = Class.extend( { 
+			_issleeping:true, 
+			init: function(name) {
+				this._name = name;
+				}, 
+		isSleeping: function() {
+		return this._issleeping;
+		  }
+		}); // 声明 Programmer 类，并继承
+		Person var Programmer = Person.extend( {
+		init: function(name, issleeping) { // 调用父类构造函数 this._super( name ); // 设置自己的状态
+		this._issleeping = issleeping;
+		}
+		});
+		var person = new Person("张三");
+		var diors = new
+		Programmer("张江男", false); // 打印 true console.log( person.isSleeping() ); // 打印 false
+		console.log(diors.isSleeping()); // 此处全为 true，故打印 true console.log( person instanceof
+		Person && person instanceof Class && diors instanceof Programmer &&
+			diors instanceof Person && diors instanceof Class);
+	</script>
+
+</html>

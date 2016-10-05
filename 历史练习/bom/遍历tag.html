@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<p id="p">nihao</p>
+		</div>
+	</body>
+	<script>
+		function getAllAttributes(tag){
+			var arr=new Array();
+			for (var h=0; h<tag.attributes.length;h++){
+				arr[h]=tag.attributes[h].nodeName+"="+tag.attributes[h].nodeValue;
+				
+			}
+			return arr;
+		}
+		var p_element=document.getElementById("p");
+		var t=getAllAttributes(p_element);
+		alert(arr);
+	</script>
+</html>

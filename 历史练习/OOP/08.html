@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>对象添加属性</title>
+	</head>
+
+	<body>
+		<script>
+			function Person() {
+				name: 'h5'
+
+			}
+          Person.prototype.address="昌平";
+			var p1 = new Person();
+
+			p1.name = "h6";
+			p1.age = '23';
+			p1.getName = function() {
+				return this.name;
+			}
+		/*	document.write(("name" in Person) + "<br/>"); //检测属性是否在类Person中
+			document.write(("age" in p1)+"<br/>"); //检测属性是否在p1对象中
+			document.write(("address" in Person)+"<br/>");//false
+				document.write(("address" in p1)+"<br/>");//true
+				*/
+				/**
+				 * in即可以检测该对象的自有属性，而且可以检测原型属性
+				 */
+				
+				/**
+				 * 如果检测该对象的自有属性，不检测原型属性,用hasOwnProperty()
+				 */
+				
+				/*document.write(p1.hasOwnProperty("name")+"<br/>")
+				document.write(p1.hasOwnProperty("age")+"<br/>")
+				document.write(p1.hasOwnProperty("address")+"<br/>")*/
+				document.write(p1.hasOwnProperty("age")+"<br/>");
+				delete p1.age;//删除某一个对象的属性
+				
+				document.write(p1.hasOwnProperty("age")+"<br/>");
+				
+		</script>
+	</body>
+
+</html>

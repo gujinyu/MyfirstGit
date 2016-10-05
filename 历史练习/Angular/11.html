@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/angular.js">
+			
+		</script>
+	</head>
+	<body>
+		<div ng-app="app" ng-controller="mycon">
+			{{addSum}}
+		</div>
+		<script>		
+		//1、声明一个模块
+			var app=angular.module("app",[]);
+		//2、把供应商配置到当前模块:服务名+Provider
+		     app.config(function(myServiceProvider){
+		     	myServiceProvider.add(10,20);
+		     });	     
+			//3、自定义一个服务
+			app.provider("myService",function myServiceProvider(){
+				this.add=function(x,y){
+				 	return x+y;
+				};			 
+				this.$get=function(){
+					return {
+					 add2:function(x,y){
+							return x+y;
+						}
+					}
+				}
+			})
+			//4、把自定义服务注入到控制器
+			app.controller("mycon",function($scope,myService){
+				$scope.addSum=myService.add2(12,14);
+			})
+		</script>
+
+	</body>
+</html>

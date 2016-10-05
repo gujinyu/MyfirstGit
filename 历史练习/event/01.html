@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div{
+				width:200px;
+				height: 200px;
+				border: 1px solid red;
+				top:300px;
+				left:300px;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div" >
+			
+		</div>
+		<script>
+	/*	var p=/^on/;
+		var m=0;
+			for(var i in window){
+				if(p.test(i)){
+					m++;
+					document.write(i+"<br/>")
+				}
+			}
+			document.write(m)*/
+			
+			//document.getElementById("div").
+			/*window.onkeydown=function(){
+				alert("keydown");
+			};
+			window.onkeypress=function(){
+				alert("keypress");
+			};
+			window.onkeyup=function(){
+				alert("keyup");
+			};*/
+			//w 119
+			//s 115
+			//a  97
+			// d  100
+			  var div=document.getElementById("div");
+			  var topValue=300;
+			  var leftValue=300;
+			window.onkeypress=function(e){
+				 
+				if(e.keyCode==119){
+					topValue-=5;
+					 div.style.top=topValue+"px";
+					
+				};
+				if(e.keyCode==115){
+					topValue+=5;
+					 div.style.top=topValue+"px";
+				};
+				if(e.keyCode==97){
+					leftValue-=5;
+					div.style.left=leftValue+"px";
+				};
+				if(e.keyCode==100){
+					leftValue+=5;
+					div.style.left=leftValue+"px";
+				}
+			};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		body {
+				font-size: 16px;
+				line-height: 25px;
+				text-align: center;
+			}
+			
+			table {
+				border-top: 1px solid #333;
+				border-left: 1px solid #333;
+				width: 400px; margin:auto;
+				
+			}
+			
+			td {
+				border-right: 1px solid #333;
+				border-bottom: 1px solid #333;
+				height: 25px;
+			}
+			
+			.center {
+				text-align: center;
+			}
+			
+			.title {
+				text-align: center;
+				font-weight: bold;
+				background-color: #cccccc;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<table border="0" cellspacing="0" cellpadding="0" id="myTable" >
+			<tr id="row1" class="title">
+				<td>商品名称</td>
+				<td>数量</td>
+				<td>价格</td>
+				<td>操作</td>
+			</tr>
+			<tr id="row2">
+				<td>防滑真皮休闲鞋</td>
+				<td class="center">12</td>
+				<td>&yen;568.50</td>
+				<td>
+				    <button onclick="delRow()">删除</button>
+				    <button>修改</button>
+				</td>
+			</tr>
+			<tr id="row3">
+				<td>抗疲劳神奇钛项链</td>
+				<td class="center">2</td>
+				<td>&yen;49.00</td>
+				<td>
+				    <button onclick="delRow()">删除</button>
+				    <button>修改</button>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<button onclick="Addrow()">增加订单</button>
+				</td>
+			</tr>
+		</table>
+	</body>
+	<script>
+	   var table=document.getElementById("myTable");
+	   document.getElementById("addbtn").onclick=function(){
+	   	
+	   }
+	
+	
+	
+	
+	
+	
+	
+	
+	  /* var 
+		function Addrow(){
+			var newRow=document.getElementById("myTable").insertRow(3);
+		    var col1=newRow.insertCell(0);
+		 	col1.innerHTML="抗疲劳神奇钛项链";
+		 	var col2=newRow.insertCell(1);
+		 	col2.innerHTML="2";
+		 	var col3=newRow.insertCell(2);
+		 	col3.innerHTML="&yen;49.00";
+		 	var col4=newRow.insertCell(3);
+		 	col4.innerHTML="<button onclick='delRow()'>删除</button> <button>修改</button>";
+		 	newRow.align="center";
+		}
+		function delRow(){
+			var oTable=document.getElementById("myTable")
+			 this.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+		}*/
+		/*window.onload=function(){
+       var oTable = document.getElementById("mytable");
+       var oTd;
+  //动态添加delete链接
+    for(var i=1;i<oTable.rows.length;i++){
+        oTd = oTable.rows[i].insertCell(2);
+        oTd.innerHTML = "<a href='#'>delete</a>";
+        oTd.firstChild.onclick = myDelete; //添加删除事件
+    }
+}*/
+
+	</script>
+</html>

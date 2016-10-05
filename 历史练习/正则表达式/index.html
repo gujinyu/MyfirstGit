@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script>
+		/*var reg1=/h5/ig;
+		var s1="asdafH5dsafh5juh5";
+		var result;
+		while((result=reg1.exec(s1))!=null){
+	        document.write(result+" ");
+	        document.write(result.index+"<br/>")
+	       }*/
+	     /* var reg2=/^\w+$/;
+	      var t="we234";
+	      alert(reg2.test(t));*/
+	    /* var pattern = /g.*gle/; //.匹配0 个一个或多个
+var str = 'google'; //*,?,+,{n,m}
+alert(pattern.test(str));//true*/
+           var pattern = /\D{7,}/; //\D{7,}匹配至少7 个非数字
+/*var str = 'googlej';
+alert(pattern.test(str));//false
+*/
+    /* var pattern = /^[a-z]+\s[0-9]{4}$/i;
+var str = 'google 2012';
+alert(pattern.exec(str));*/
+var pattern = /^\s+/; 
+var str = ' goo gle ';
+alert(str+"  "+str.length);
+var result = str.replace(pattern, '');
+alert(result+" "+result.length);
+pattern = /\s+$/; 
+result = result.replace(pattern, '');
+alert(result+" "+result.length);
+pattern = /\s+/g; 
+result = result.replace(pattern, '');
+alert(result+" "+result.length);
+	</script>
+	
+</html>

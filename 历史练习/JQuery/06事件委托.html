@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+	<body>
+		<ul id="ul1">
+			<li>北京</li>
+			<li>北京</li>
+			<li>北京</li>
+			<li>北京</li>
+			<li>北京</li>
+		</ul>
+		<ul id="ul2">
+			<li>北京</li>
+			<li>北京</li>
+			<li>北京</li>
+			<li>北京</li>
+			<li>北京</li>
+		</ul>
+		<script>
+			$(function(){
+				var t=0;
+				$("#ul1,#ul2").delegate("li","click",function(){
+					//$(this).css("background-color","blue")
+						 //  .siblings().css("background-color","#fff");
+					//alert($(this).css("background-color"))
+					if(!$(this).attr("s")){
+						$(this).css("background-color","blue");
+						$(this).attr("s",0);
+					}else{
+						$(this).css("background-color","#fff");
+						$(this).removeAttr("s")
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

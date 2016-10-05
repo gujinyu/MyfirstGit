@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/angular.js" ></script>
+	</head>
+	<body>
+		<div ng-app="myapp" ng-controller="hexController">
+			{{hex(19)}}
+		</div>
+		<div>
+			<p><a href=""></a></p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var myapp=angular.module("myapp",[]);
+		myapp.service('hexafy',function(){
+			this.myFunc=function(x){
+				return x.toString(16);
+			}
+		});
+		myapp.controller("hexController",function($scope,hexafy){
+			$scope.hex=function(x){
+				return hexafy.myFunc(x);
+			}
+		});
+	</script>
+</html>

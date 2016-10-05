@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>配置对象的属性不可枚举</title>
+	</head>
+	<body>
+		<script>
+			function Student(name, age, address, weight, hobby, friends) {
+				this.age = age,
+					this.name = name,
+					this.address = address,
+					this.weight = weight,
+					this.hobby = hobby,
+					this.friends = friends
+			}
+
+			Student.prototype = {
+				"classNO": "701",
+				"Teacher": "liuhua",
+				"Subject": ['H5+CSS3', 'JS', 'Node.js', "Bootstrap", 'JQuery'],
+				"getName": function() {
+					return this.name;
+				}
+
+			}
+			var s1 = new Student("czf", "23", "昌平", "75", ['登山', '打羽毛球'], ['TOM', "JACK"]);
+			  for(var t in s1){
+			  	document.write(t+'<br/>');
+			  }
+			
+			Object.defineProperty(s1,'name',{
+				enumerable:false
+			})
+			document.write('<hr/>');
+			for(var t in s1){
+			  	document.write(t+'<br/>');
+			  }
+			
+			var s2 = new Student("czf2", "18", "通州", "60", ['登山', '打羽毛球', 'GAME'], ['TOM', "JACK", "ROSE"]);
+		
+		
+		</script>
+	</body>
+</html>

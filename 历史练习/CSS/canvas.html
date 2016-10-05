@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* { margin: 0; padding: 0; }
+body { text-align: center; background-color: #0cc; }
+
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="300" height="500" style="background: #0cc"></canvas>
+	<script type="text/javascript">
+		window.onload=function(){
+			var canvas=document.getElementById("canvas"),
+				context=canvas.getContext('2d'),
+				centerX=canvas.width/2,
+				centerY=canvas.height/2,
+				rad=Math.PI*2/100,
+				speed=0.9;
+				//绘制蓝色外圈
+				function blueCircle(n){
+					context.save();
+					context.strokeStyle="#fff";
+					context.lineWidth=4;
+					context.beginPath();
+					context.arc(centerX,centerY,100,-Math.PI/2, -Math.PI/2+n*rad,false);
+					context.stroke();
+					context.closePath();
+					context.restore();
+				};
+				//绘制白色外圈
+				function whiteCircle(){
+					context.save();
+					context.beginPath();
+					context.strokeStyle="white";
+					context.arc(centerX,centerY,100,0,Math.PI*2,false);
+					context.stroke();
+					context.closePath();
+					context.restore();
+				}
+				(function drawFrame(){
+            window.requestAnimationFrame(drawFrame, canvas);
+            context.clearRect(0, 0, canvas.width, canvas.height);
+          
+            whiteCircle();
+            blueCircle(speed);
+            if(speed > 100) speed = 0;
+            speed += 0.1;
+        }());
+
+		}
+		</script>
+	</body>
+</html>
